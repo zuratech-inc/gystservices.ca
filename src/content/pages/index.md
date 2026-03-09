@@ -24,6 +24,7 @@ inclusivity:
 
 about:
   label: "About Valerie"
+  image: ""
   years: "20+"
   years_label: "Years in counselling<br>&amp; community work"
   bio:
@@ -42,6 +43,7 @@ philosophy:
   label: "Counselling Philosophy"
   heading: "A journey that requires courage"
   body: "Counselling is a purposeful process that facilitates growth, direction, and wellness — it is all about change. A genuine interest in exploring what troubles you is the first brave step."
+  quote: "I would be honoured by your willingness to entrust me as a partner in this work."
   cards:
     - title: "Collaborative"
       body: "Therapeutic change is the collaborative work done by counsellor and client — identifying goals as well as a plan to realize them together."
@@ -49,9 +51,6 @@ philosophy:
       body: "A purposefully safe and confidential place where we can explore the possibilities in change without judgment."
     - title: "Guided by You"
       body: "My intention is to be guided by your needs — meeting you where you are with genuine empathy and positive regard for your person."
-
-mission:
-  quote: "I would be honoured by your willingness to entrust me as a partner in this work."
 
 approach:
   label: "Therapeutic Perspective"
@@ -70,10 +69,23 @@ events_section:
   heading: "Upcoming gatherings"
   body: "Join us for workshops, circles, and community events. All are welcome — registration is open."
 
-testimonials_section:
+testimonials:
   label: "Client Voices"
   heading: "What clients are saying"
   body: "Real words from real people who have walked this journey."
+  items:
+    - quote: "Valerie has a way about her that has me leaving her office with renewed hope. I always look forward to the time with her."
+      author: "C.P."
+    - quote: "I felt instantly comfortable… she just made me feel so normal and I felt I could just trust her immediately."
+      author: "B.A."
+    - quote: "It was no time at all before we got right down to business. I have been to counselling before but it never seemed to go anywhere."
+      author: "W.P."
+    - quote: "She has a way of focusing on positive things and I leave feeling good about myself!"
+      author: "H.G."
+    - quote: "Sitting with her has me feeling so safe. It's like the space is all mine and she's got my back."
+      author: "J.W."
+    - quote: "I found that Valerie was a very approachable person and gave feedback that was very relaxing."
+      author: "D.W."
 
 blog_section:
   label: "From the Blog"
@@ -84,6 +96,10 @@ contact:
   label: "Get in Touch"
   heading: "Ready to begin?"
   body: "In any counselling relationship, \"good fit\" is essential. Both parties need to feel like they will work well together. You deserve a space where you feel truly seen and understood."
+  phone: "368-996-6230"
+  email: "info@gystservices.ca"
+  hours: "Mon–Thu 12 PM – 8 PM"
+  location: "Online counselling across Alberta & British Columbia"
   free_session:
     pill: "Complimentary"
     heading: "Your first session is free"

@@ -45,6 +45,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Photo", name: "image", widget: "image", required: false }
               - { label: "Years of Experience", name: "years", widget: "string" }
               - { label: "Years Label (HTML allowed)", name: "years_label", widget: "string" }
               - label: "Bio Paragraphs"
@@ -65,18 +66,13 @@ collections:
               - { label: "Section Label", name: "label", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body Text", name: "body", widget: "text" }
+              - { label: "Quote", name: "quote", widget: "text" }
               - label: "Cards"
                 name: "cards"
                 widget: "list"
                 fields:
                   - { label: "Card Title", name: "title", widget: "string" }
                   - { label: "Card Body", name: "body", widget: "text" }
-
-          - label: "Mission Band"
-            name: "mission"
-            widget: "object"
-            fields:
-              - { label: "Quote", name: "quote", widget: "text" }
 
           - label: "Approach Section"
             name: "approach"
@@ -100,13 +96,20 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body Text", name: "body", widget: "text" }
 
-          - label: "Testimonials Section Header"
-            name: "testimonials_section"
+          - label: "Testimonials"
+            name: "testimonials"
             widget: "object"
             fields:
               - { label: "Section Label", name: "label", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body Text", name: "body", widget: "text" }
+              - label: "Testimonials"
+                name: "items"
+                widget: "list"
+                max: 6
+                fields:
+                  - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Author Initials", name: "author", widget: "string" }
 
           - label: "Blog Section Header"
             name: "blog_section"
@@ -123,6 +126,10 @@ collections:
               - { label: "Section Label", name: "label", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body Text", name: "body", widget: "text" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
               - label: "Free Session Card"
                 name: "free_session"
                 widget: "object"
@@ -140,6 +147,9 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Wellness", "Culture & Healing", "Personal Growth", "Family Systems", "Community"], required: false }
+      - { label: "Read Time", name: "readTime", widget: "string", required: false, hint: "e.g. 5 min read" }
+      - { label: "Tags", name: "tags", widget: "list", required: false, field: { label: "Tag", name: "tag", widget: "string" } }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "events"
@@ -151,5 +161,9 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Event Date", name: "eventDate", widget: "datetime" }
+      - { label: "Event Type", name: "eventType", widget: "select", options: ["Workshop", "Community Circle", "Seminar", "Talk", "Retreat"], default: "Workshop" }
+      - { label: "Event Time", name: "eventTime", widget: "string", required: false, hint: "e.g. 2:00 – 4:00 PM" }
       - { label: "Location", name: "location", widget: "string" }
+      - { label: "Spots Available", name: "spots", widget: "number", required: false }
+      - { label: "Price", name: "price", widget: "string", required: false, default: "Free" }
       - { label: "Body", name: "body", widget: "markdown" }

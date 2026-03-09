@@ -31,6 +31,36 @@ module.exports = function (eleventyConfig) {
   });
 
   /**
+   * limit(arr, n) — Return the first n items of an array.
+   * Nunjucks built-in slice() chunks arrays rather than slicing them,
+   * so this custom filter provides Python/JS-style head slicing.
+   */
+  eleventyConfig.addFilter("limit", function (arr, n) {
+    if (!Array.isArray(arr)) return arr;
+    return arr.slice(0, n);
+  });
+
+  /**
+   * monthShort(value) — Return 3-letter month abbreviation from a date.
+   * Used in event cards to format the date badge (e.g. "Mar", "Apr").
+   */
+  eleventyConfig.addFilter("monthShort", function (value) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const d = new Date(value);
+    return months[d.getUTCMonth()];
+  });
+
+  /**
+   * dayOfMonth(value) — Return the day number from a date.
+   * Used in event cards to format the date badge (e.g. "15", "5").
+   */
+  eleventyConfig.addFilter("dayOfMonth", function (value) {
+    const d = new Date(value);
+    return d.getUTCDate();
+  });
+
+  /**
    * startsWith(str, prefix) — Check if a string starts with a prefix.
    * Used in partials/header.njk for nav active state:
    *   {% if page.url | startsWith(item.url) %}
