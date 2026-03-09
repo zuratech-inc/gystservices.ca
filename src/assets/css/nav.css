@@ -1,0 +1,233 @@
+/* =====================================================
+   nav.css — Fixed navigation bar
+   Extracted from prototype/home.html and blog.html.
+   The .scrolled class is toggled by nav.js on scroll.
+   Mobile menu .open class is toggled by nav.js.
+   ===================================================== */
+
+/* ── Skip link (visible on focus for keyboard users) ── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 1100;
+  padding: 0.75rem 1.5rem;
+  background: var(--sage-600);
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ── Site header (fixed bar) ── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* ── Nav inside header ── */
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+}
+
+/* Scrolled state: frosted glass effect applied by nav.js */
+#nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 1px 0 var(--border);
+  padding: 0.7rem 2.5rem;
+}
+
+/* Interior pages start with solid nav via .nav--solid modifier */
+#nav.nav--solid {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+/* ── Logo ── */
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--bark);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.nav-logo span {
+  color: var(--sage-500);
+  font-weight: 300;
+}
+
+/* ── Nav links pill container ── */
+.nav-links {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin: 0;
+}
+
+.nav-links li {
+  flex-shrink: 0;
+}
+
+.nav-links a {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-mid);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  transition: color 0.2s ease, background 0.2s ease;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--text);
+  background: var(--pearl);
+}
+
+/* Active page link */
+.nav-links a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 500;
+  background: var(--pearl);
+}
+
+/* ── CTA button in nav ── */
+.nav-links .nav-cta {
+  background: var(--sage-500);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1.4rem;
+}
+
+.nav-links .nav-cta:hover,
+.nav-links .nav-cta:focus-visible {
+  background: var(--sage-600);
+  color: white;
+}
+
+/* ── Mobile hamburger toggle ── */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  padding: 10px 6px;
+  position: relative;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--bark);
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  width: calc(100% - 12px);
+  border-radius: 2px;
+  transition: top 0.3s ease, transform 0.3s ease, opacity 0.2s ease;
+}
+
+.mobile-toggle span:nth-child(1) { top: 10px; }
+.mobile-toggle span:nth-child(2) { top: 21px; }
+.mobile-toggle span:nth-child(3) { top: 32px; }
+
+/* Hamburger → X animation (toggled by nav.js) */
+.mobile-toggle.open span:nth-child(1) {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.mobile-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle.open span:nth-child(3) {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+/* ── Responsive: tablet / mobile nav ── */
+@media (max-width: 960px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  /* Mobile menu open state */
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.75rem 1.5rem 1.5rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    gap: 0.15rem;
+    border: none;
+  }
+
+  .nav-links.open li {
+    flex-shrink: unset;
+  }
+
+  .nav-links.open a {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+    white-space: normal;
+  }
+
+  .nav-links.open .nav-cta {
+    margin-top: 0.5rem;
+    text-align: center;
+    border-radius: var(--radius-full);
+    padding: 0.85rem 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #nav,
+  #nav.scrolled {
+    padding-inline: 1.25rem;
+  }
+}

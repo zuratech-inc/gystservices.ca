@@ -1,0 +1,481 @@
+{#
+  layouts/home.njk — Homepage layout
+  Extends base.njk. navSolid is false so the nav starts
+  transparent and gains the frosted glass style on scroll
+  (handled by nav.js). All homepage sections live here
+  rather than in Markdown because of the rich HTML structure.
+#}
+{% set navSolid = false %}
+{% extends "layouts/base.njk" %}
+
+{% block body_content %}
+
+{# ── HERO ── #}
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--3" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--4" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.264.26-2.467.73-3.56"/></svg>
+      </span>
+      A welcoming space for everyone
+    </div>
+    <h1>Becoming is both<br><em>exciting &amp; scary</em>,<br>at the same time</h1>
+    <p class="hero-sub">A culturally grounded, inclusive counselling practice where every person — regardless of background, identity, or origin — is honoured and welcome.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">
+        Book Your Free First Session
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+      </a>
+      <a href="#about" class="btn btn-secondary">Learn About Valerie</a>
+    </div>
+  </div>
+</section>
+
+{# ── INCLUSIVITY BANNER ── #}
+<section class="inclusivity" aria-label="Our commitment to inclusion">
+  <div class="inclusivity-inner reveal">
+    <div class="inclusivity-content">
+      <div class="inclusivity-icons" aria-hidden="true">
+        <span class="inclusivity-icon">🌿</span>
+        <span class="inclusivity-icon">🤝</span>
+        <span class="inclusivity-icon">🌍</span>
+        <span class="inclusivity-icon">💜</span>
+        <span class="inclusivity-icon">☀️</span>
+      </div>
+      <h2>Everyone belongs here</h2>
+      <p>GYST Counselling is built on a foundation of respect for all peoples. Rooted in Indigenous teachings and open to every culture, background, and identity — we believe healing is a universal right. Whether you're Indigenous, a newcomer finding your footing, or anyone seeking support, this is your space.</p>
+      <div class="inclusivity-values">
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Indigenous-guided practice</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Culturally responsive</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Newcomer-friendly</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> LGBTQ2S+ affirming</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> All faiths &amp; beliefs</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Accessible online counselling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── ABOUT ── #}
+<section class="about" id="about" aria-label="About Valerie">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-img-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+            Valerie's Photo
+          </div>
+        </div>
+        <div class="about-float-card" aria-label="Experience">
+          <strong>20+</strong>
+          <span>Years in counselling<br>&amp; community work</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">About Valerie</p>
+        <h2 class="section-heading">{{ site.practitioner.name }}, {{ site.practitioner.credentials }}</h2>
+        <p>Born in The Pas, Manitoba and raised in Canada's North, the Indigenous worldview is something I hold close and continues to guide me in everything I do. Third in a line of nine children, I learned at a very young age the value of simple basic truths.</p>
+        <p>I define myself physically, mentally, emotionally, and spiritually — and attend to each of these parts of myself daily. When life gets complicated, I have learned to simplify by returning to core values.</p>
+        <p>With years at Mount Royal University coaching Indigenous students and eight years at Hull Services supporting families healing from intergenerational trauma, I bring deep experience in culturally responsive care to my private practice. I'm a proud grandmother to six beautiful grandchildren who are the loves of my life.</p>
+        <div class="credentials-row">
+          <div class="credential-chip">
+            <strong>M.C.</strong>
+            <span>Master of Counselling</span>
+          </div>
+          <div class="credential-chip">
+            <strong>CCC</strong>
+            <span>Canadian Certified Counsellor</span>
+          </div>
+          <div class="credential-chip">
+            <strong>B.A.</strong>
+            <span>Psychology, U of Lethbridge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── PHILOSOPHY ── #}
+<section class="philosophy" id="philosophy" aria-label="Counselling philosophy">
+  <div class="section-inner">
+    <div class="philosophy-header reveal">
+      <p class="section-label">Counselling Philosophy</p>
+      <h2 class="section-heading">A journey that requires courage</h2>
+      <p class="section-sub">Counselling is a purposeful process that facilitates growth, direction, and wellness — it is all about change. A genuine interest in exploring what troubles you is the first brave step.</p>
+    </div>
+    <div class="philosophy-grid">
+      <div class="phil-card reveal">
+        <div class="phil-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+        </div>
+        <h3>Collaborative</h3>
+        <p>Therapeutic change is the collaborative work done by counsellor and client — identifying goals as well as a plan to realize them together.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+        </div>
+        <h3>Safe &amp; Confidential</h3>
+        <p>A purposefully safe and confidential place where we can explore the possibilities in change without judgment.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+        </div>
+        <h3>Guided by You</h3>
+        <p>My intention is to be guided by your needs — meeting you where you are with genuine empathy and positive regard for your person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── MISSION BAND ── #}
+<section class="mission-band" aria-label="Mission statement">
+  <div class="mi reveal">
+    <blockquote>"I would be honoured by your willingness to entrust me as a partner in this work."</blockquote>
+    <p class="attr">— {{ site.practitioner.name }}</p>
+  </div>
+</section>
+
+{# ── APPROACH ── #}
+<section class="approach" id="approach" aria-label="Therapeutic approach">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Therapeutic Perspective</p>
+      <h2 class="section-heading">Grounded in culture, guided by theory</h2>
+      <p class="section-sub">My therapeutic perspective is influenced at its foundation by cultural teachings and integrates three evidence-based frameworks.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-num" aria-hidden="true">01</div>
+        <h3>Existentialism</h3>
+        <p>A philosophical approach at whose core is the belief that each of us has the ability to find meaning in our lives. The counsellor works to understand you on your own subjective terms, encouraging reflection and taking responsibility for change.</p>
+      </div>
+      <div class="approach-card reveal">
+        <div class="approach-num" aria-hidden="true">02</div>
+        <h3>Solutions-Focused Brief Therapy</h3>
+        <p>Concentrating on small, realistic, and sustainable goals that result in positive outcomes. You are empowered as the expert in who you are — we focus on solutions and results rather than dwelling on problems.</p>
+      </div>
+      <div class="approach-card reveal">
+        <div class="approach-num" aria-hidden="true">03</div>
+        <h3>Family Systems Therapy</h3>
+        <p>Focusing on human problems from a relational perspective — we are best understood by how we interact within our systems. This explores intergenerational meanings, rules, processes, and cultural nuances.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── EVENTS PREVIEW ── #}
+<section class="events" id="events" aria-label="Upcoming events">
+  <div class="section-inner">
+    <div class="events-header reveal">
+      <div>
+        <p class="section-label">Community Events</p>
+        <h2 class="section-heading">Upcoming gatherings</h2>
+        <p class="section-sub">Join us for workshops, circles, and community events. All are welcome — registration is open.</p>
+      </div>
+      <a href="/events/" class="btn btn-secondary">
+        View All Events
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+      </a>
+    </div>
+    <div class="events-grid home-events">
+
+      {# Event 1 #}
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Mar</div>
+            <div class="day">15</div>
+          </div>
+          <div class="event-banner-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Workshop</span>
+          <h3>Wellness Through Cultural Connection</h3>
+          <p>An open workshop exploring how cultural identity strengthens mental wellness. All backgrounds welcome.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 2:00 – 4:00 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <a href="/events/wellness-through-cultural-connection/" class="btn-register">
+            Register Now
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+          </a>
+          <span class="event-spots">12 spots left</span>
+        </div>
+      </div>
+
+      {# Event 2 #}
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Mar</div>
+            <div class="day">22</div>
+          </div>
+          <div class="event-banner-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Community Circle</span>
+          <h3>Newcomers' Wellness Circle</h3>
+          <p>A gentle, guided sharing circle for newcomers to Canada navigating the emotional journey of settling into a new home.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 6:00 – 7:30 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <a href="/events/newcomers-wellness-circle/" class="btn-register">
+            Register Now
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+          </a>
+          <span class="event-spots">8 spots left</span>
+        </div>
+      </div>
+
+      {# Event 3 #}
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Apr</div>
+            <div class="day">05</div>
+          </div>
+          <div class="event-banner-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Seminar</span>
+          <h3>Understanding Family Systems</h3>
+          <p>An educational evening exploring how family dynamics shape our wellbeing — and how to foster healthier patterns.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 7:00 – 9:00 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <a href="/events/understanding-family-systems/" class="btn-register">
+            Register Now
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+          </a>
+          <span class="event-spots">20 spots left</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ── TESTIMONIALS ── #}
+<section class="testimonials" id="testimonials" aria-label="Client testimonials">
+  <div class="section-inner">
+    <div class="testimonials-header reveal">
+      <p class="section-label">Client Voices</p>
+      <h2 class="section-heading">What clients are saying</h2>
+      <p class="section-sub">Real words from real people who have walked this journey.</p>
+    </div>
+    <div class="testi-grid">
+      {% for t in testimonials %}
+        <div class="testi-card reveal">
+          <div class="testi-stars" aria-label="5 stars">
+            {% for i in range(0, 5) %}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+          </div>
+          <p>"{{ t.quote }}"</p>
+          <span class="testi-author">— {{ t.author }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── BLOG PREVIEW ── #}
+<section class="blog" id="blog" aria-label="Recent blog posts">
+  <div class="section-inner">
+    <div class="blog-header reveal">
+      <div>
+        <p class="section-label">From the Blog</p>
+        <h2 class="section-heading">Insights &amp; reflections</h2>
+        <p class="section-sub">Thoughts on wellness, cultural identity, growth, and the journey of becoming.</p>
+      </div>
+      <a href="/blog/" class="btn btn-secondary">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+      </a>
+    </div>
+    <div class="home-blog-grid">
+
+      {# Featured post #}
+      <article class="blog-featured reveal">
+        <div class="blog-featured-img">
+          <div class="feat-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-category cat-culture">Culture &amp; Healing</span>
+            <span class="blog-date">February 12, 2026 · 8 min read</span>
+          </div>
+          <h3>Returning to Core Values: How Indigenous Teachings Guide Modern Wellness</h3>
+          <p>In a world that moves fast and asks us to keep up, there is profound wisdom in returning to the simple truths taught by our elders. This post explores how grounding ourselves in the physical, mental, emotional, and spiritual dimensions of wellness can bring clarity to even the most complicated seasons of life.</p>
+          <a href="/blog/returning-to-core-values/" class="blog-read-link">
+            Read full article
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+          </a>
+          <div class="blog-author">
+            <div class="blog-author-avatar" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+            </div>
+            <div class="blog-author-info">
+              <div class="aname">{{ site.practitioner.name }}</div>
+              <div class="arole">{{ site.practitioner.credentials }} — Founder, {{ site.name }}</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {# Side posts #}
+      <div class="blog-side">
+        <article class="blog-sm reveal">
+          <div class="blog-sm-img">
+            <div class="sm-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-category cat-growth">Personal Growth</span>
+              <span class="blog-date">January 28, 2026 · 5 min read</span>
+            </div>
+            <h3>Finding Home: Navigating Identity as a Newcomer to Canada</h3>
+            <p>For those settling into a new country, the emotional journey can be as challenging as the practical one. Here's how counselling can help.</p>
+            <a href="/blog/finding-home/" class="blog-read-link">
+              Read article
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+            </a>
+            <div class="blog-author">
+              <div class="blog-author-avatar" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+              </div>
+              <div class="blog-author-info">
+                <div class="aname">{{ site.practitioner.name }}</div>
+                <div class="arole">{{ site.practitioner.credentials }}</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-sm reveal">
+          <div class="blog-sm-img">
+            <div class="sm-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-category cat-family">Family Systems</span>
+              <span class="blog-date">January 10, 2026 · 6 min read</span>
+            </div>
+            <h3>Breaking Cycles: Understanding Intergenerational Patterns</h3>
+            <p>We carry more from our families than we realize. Understanding these patterns is the first step toward building healthier relationships.</p>
+            <a href="/blog/breaking-cycles/" class="blog-read-link">
+              Read article
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+            </a>
+            <div class="blog-author">
+              <div class="blog-author-avatar" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+              </div>
+              <div class="blog-author-info">
+                <div class="aname">{{ site.practitioner.name }}</div>
+                <div class="arole">{{ site.practitioner.credentials }}</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ── CONTACT ── #}
+<section class="contact" id="contact" aria-label="Contact information">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-heading">Ready to begin?</h2>
+        <p>In any counselling relationship, "good fit" is essential. Both parties need to feel like they will work well together. You deserve a space where you feel truly seen and understood.</p>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Phone</strong>
+            <a href="tel:{{ site.contact.phone | replace('-', '') }}">{{ site.contact.phone }}</a>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Email</strong>
+            <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Hours</strong>
+            <span>{{ site.contact.hours }}</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Location</strong>
+            <span>{{ site.contact.location }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="free-card">
+          <span class="free-pill">&#10022; Complimentary</span>
+          <h3>Your first session is free</h3>
+          <p>Good fit matters. That's why your initial session comes at no charge — so we can both feel confident about working together. Book by phone or email and we'll find a time that works.</p>
+          <div class="free-card-actions">
+            <a href="tel:{{ site.contact.phone | replace('-', '') }}" class="btn btn-primary">
+              Call to Book
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+            </a>
+            <a href="mailto:{{ site.contact.email }}" class="btn btn-secondary">
+              Email Us
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

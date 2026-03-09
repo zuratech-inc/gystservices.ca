@@ -1,0 +1,97 @@
+{#
+  macros/components.njk — Reusable parameterised components
+
+  Usage:
+    {% from "macros/components.njk" import btn, tag, sectionHeader, breadcrumb %}
+
+  Macros vs partials: macros accept parameters (like functions),
+  partials are included as-is. Use macros for patterns that
+  appear in multiple contexts with different data.
+#}
+
+{#
+  btn(text, url, variant, hasArrow)
+  Renders a button or anchor-button.
+  @param {string} text       — Button label
+  @param {string} url        — href (if omitted, renders <button>)
+  @param {string} variant    — 'primary' | 'secondary' | 'sm' | 'register'
+  @param {boolean} hasArrow  — Append right-arrow SVG
+#}
+{% macro btn(text, url='', variant='primary', hasArrow=false) %}
+  {% if url %}
+    <a href="{{ url }}" class="btn btn-{{ variant }}">
+      {{ text }}
+      {% if hasArrow %}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/>
+        </svg>
+      {% endif %}
+    </a>
+  {% else %}
+    <button type="button" class="btn btn-{{ variant }}">
+      {{ text }}
+      {% if hasArrow %}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/>
+        </svg>
+      {% endif %}
+    </button>
+  {% endif %}
+{% endmacro %}
+
+{#
+  tag(text, category)
+  Renders a category pill tag.
+  @param {string} text      — Tag label
+  @param {string} category  — CSS modifier class suffix (e.g. 'wellness', 'culture')
+#}
+{% macro tag(text, category='') %}
+  <span class="blog-category{% if category %} cat-{{ category }}{% endif %}">
+    {{ text }}
+  </span>
+{% endmacro %}
+
+{#
+  sectionHeader(overline, heading, body)
+  Renders the standard section header pattern:
+  overline label + Fraunces heading + optional body text.
+  @param {string} overline  — Short uppercase label text
+  @param {string} heading   — Main heading (rendered as h2)
+  @param {string} body      — Optional lead paragraph
+#}
+{% macro sectionHeader(overline, heading, body='') %}
+  <div class="section-header">
+    {% if overline %}
+      <p class="section-label">{{ overline }}</p>
+    {% endif %}
+    <h2 class="section-heading">{{ heading }}</h2>
+    {% if body %}
+      <p class="section-sub">{{ body }}</p>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{#
+  breadcrumb(items)
+  Renders a breadcrumb navigation list.
+  @param {array} items — Array of { label, url } objects.
+                         Last item is the current page (no link).
+  Example:
+    {{ breadcrumb([
+      { label: 'Home', url: '/' },
+      { label: 'Blog', url: '/blog/' },
+      { label: 'Post Title' }
+    ]) }}
+#}
+{% macro breadcrumb(items) %}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    {% for item in items %}
+      {% if not loop.last %}
+        <a href="{{ item.url }}">{{ item.label }}</a>
+        <span aria-hidden="true">›</span>
+      {% else %}
+        <span aria-current="page">{{ item.label }}</span>
+      {% endif %}
+    {% endfor %}
+  </nav>
+{% endmacro %}

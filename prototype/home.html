@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYST Counselling Inc. — Valerie M. Sipos, M.C., CCC</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --snow: #FAFBFC;
+    --pearl: #F5F3F0;
+    --linen: #F0ECE6;
+    --sand: #E8E2D8;
+    --sage-50: #F2F5F0;
+    --sage-100: #E1E8DC;
+    --sage-200: #C3D1B8;
+    --sage-400: #8BA876;
+    --sage-500: #6B8F56;
+    --sage-600: #557243;
+    --terracotta-50: #FDF5F0;
+    --terracotta-100: #F9E5D8;
+    --terracotta-200: #EDCBB3;
+    --terracotta-400: #D4956A;
+    --terracotta-500: #C07A4C;
+    --sky-50: #F0F7FB;
+    --sky-100: #DCE9F2;
+    --sky-200: #B3D1E3;
+    --sky-400: #6BA4C5;
+    --lavender-50: #F5F2F8;
+    --lavender-100: #E6DFF0;
+    --lavender-200: #CFBFE3;
+    --ochre-50: #FBF7EF;
+    --ochre-100: #F3EBD6;
+    --ochre-400: #D4A843;
+    --bark: #2E2923;
+    --bark-light: #4A4239;
+    --text: #3B3630;
+    --text-mid: #6B645B;
+    --text-light: #918981;
+    --border: #E5E1DB;
+    --shadow-sm: 0 1px 3px rgba(46,41,35,0.04);
+    --shadow-md: 0 4px 20px rgba(46,41,35,0.06);
+    --shadow-lg: 0 12px 40px rgba(46,41,35,0.08);
+    --shadow-xl: 0 20px 60px rgba(46,41,35,0.1);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-full: 100px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: 'Outfit', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.65;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== TYPOGRAPHY ===== */
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 400; }
+  .display-light { font-family: 'Fraunces', Georgia, serif; font-weight: 300; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  nav.scrolled {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    box-shadow: 0 1px 0 var(--border);
+    padding: 0.7rem 2.5rem;
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem; font-weight: 500;
+    color: var(--bark); letter-spacing: -0.03em;
+  }
+  .nav-logo span { color: var(--sage-500); font-weight: 300; }
+
+  .nav-links {
+    display: flex; gap: 0.4rem; list-style: none; align-items: center;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    padding: 0.35rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 400;
+    color: var(--text-mid); padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
+    transition: all 0.25s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--pearl);
+  }
+
+  .nav-links .nav-cta {
+    background: var(--sage-500);
+    color: white; font-weight: 500;
+    padding: 0.5rem 1.4rem;
+  }
+  .nav-links .nav-cta:hover {
+    background: var(--sage-600);
+    color: white; transform: none;
+  }
+
+  .mobile-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 32px; height: 24px; position: relative; z-index: 10;
+  }
+  .mobile-toggle span {
+    display: block; width: 100%; height: 2px;
+    background: var(--bark); position: absolute;
+    border-radius: 2px; transition: all 0.3s ease;
+  }
+  .mobile-toggle span:nth-child(1) { top: 0; }
+  .mobile-toggle span:nth-child(2) { top: 11px; }
+  .mobile-toggle span:nth-child(3) { top: 22px; }
+  .mobile-toggle.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+  .mobile-toggle.open span:nth-child(2) { opacity: 0; }
+  .mobile-toggle.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 8rem 2.5rem 5rem; text-align: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(175deg, var(--sage-50) 0%, var(--white) 35%, var(--terracotta-50) 65%, var(--sky-50) 100%);
+  }
+
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.4;
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+  .hero-orb--1 {
+    width: 500px; height: 500px;
+    background: var(--sage-100); top: -10%; right: -5%;
+    animation-delay: 0s;
+  }
+  .hero-orb--2 {
+    width: 400px; height: 400px;
+    background: var(--terracotta-100); bottom: -5%; left: -5%;
+    animation-delay: -7s;
+  }
+  .hero-orb--3 {
+    width: 300px; height: 300px;
+    background: var(--sky-100); top: 30%; left: 10%;
+    animation-delay: -14s;
+  }
+  .hero-orb--4 {
+    width: 250px; height: 250px;
+    background: var(--lavender-100); bottom: 20%; right: 15%;
+    animation-delay: -4s;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -25px) scale(1.05); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(15px, 10px) scale(1.02); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2; max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 0.45rem 1.2rem 0.45rem 0.45rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem; font-weight: 400; color: var(--text-mid);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-badge-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--sage-100);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-badge-dot svg { width: 14px; height: 14px; color: var(--sage-500); }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height: 1.12; font-weight: 400;
+    color: var(--bark); letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 300;
+    color: var(--sage-500);
+  }
+
+  .hero-sub {
+    font-size: 1.12rem; color: var(--text-mid);
+    max-width: 540px; margin: 0 auto 2.5rem;
+    line-height: 1.75; font-weight: 300;
+    opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 0.75rem;
+    justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem; border-radius: var(--radius-full);
+    font-size: 0.88rem; font-weight: 500; font-family: 'Outfit', sans-serif;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: none; cursor: pointer;
+  }
+  .btn svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
+  .btn:hover svg { transform: translateX(3px); }
+
+  .btn-primary {
+    background: var(--sage-500); color: white;
+  }
+  .btn-primary:hover {
+    background: var(--sage-600);
+    box-shadow: 0 8px 30px rgba(107,143,86,0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: var(--white);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--sage-200);
+    background: var(--sage-50);
+    transform: translateY(-2px);
+  }
+
+  /* ===== INCLUSIVITY BANNER ===== */
+  .inclusivity {
+    padding: 5rem 2.5rem;
+    background: var(--white);
+    position: relative;
+  }
+
+  .inclusivity-inner {
+    max-width: 1140px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--sage-50) 0%, var(--sky-50) 40%, var(--lavender-50) 70%, var(--terracotta-50) 100%);
+    border-radius: var(--radius-xl);
+    padding: 4rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .inclusivity-inner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%236B8F56' stroke-width='0.3' opacity='0.08'/%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+
+  .inclusivity-content {
+    position: relative; z-index: 2;
+    text-align: center; max-width: 720px; margin: 0 auto;
+  }
+
+  .inclusivity-icons {
+    display: flex; gap: 0.5rem;
+    justify-content: center; margin-bottom: 1.75rem;
+  }
+
+  .inclusivity-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .inclusivity-icon:nth-child(1) { background: var(--sage-100); }
+  .inclusivity-icon:nth-child(2) { background: var(--terracotta-100); }
+  .inclusivity-icon:nth-child(3) { background: var(--sky-100); }
+  .inclusivity-icon:nth-child(4) { background: var(--lavender-100); }
+  .inclusivity-icon:nth-child(5) { background: var(--ochre-100); }
+
+  .inclusivity h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--bark); line-height: 1.3;
+    margin-bottom: 1rem; font-weight: 400;
+  }
+
+  .inclusivity p {
+    font-size: 1.02rem; color: var(--text-mid);
+    line-height: 1.8; max-width: 600px; margin: 0 auto;
+  }
+
+  .inclusivity-values {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    justify-content: center; margin-top: 2rem;
+  }
+
+  .value-tag {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: var(--radius-full);
+    font-size: 0.82rem; color: var(--text-mid); font-weight: 400;
+  }
+
+  .value-tag svg { width: 14px; height: 14px; color: var(--sage-400); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION COMMONS ===== */
+  section { padding: 6rem 2.5rem; }
+  .section-inner { max-width: 1140px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--sage-500);
+    font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .section-label::before {
+    content: ''; width: 18px; height: 1.5px;
+    background: var(--sage-400); border-radius: 2px;
+  }
+
+  .section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--bark); line-height: 1.2;
+    margin-bottom: 1rem; font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-mid);
+    line-height: 1.8; max-width: 580px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about { background: var(--white); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 0.85fr 1.15fr;
+    gap: 5rem; align-items: start;
+  }
+
+  .about-visual {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .about-img-frame {
+    aspect-ratio: 3/4;
+    background: linear-gradient(145deg, var(--sage-50), var(--terracotta-50));
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .about-img-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: var(--radius-lg);
+  }
+
+  .about-img-placeholder {
+    text-align: center; color: var(--text-light);
+    font-size: 0.85rem;
+  }
+  .about-img-placeholder svg {
+    width: 56px; height: 56px; color: var(--sage-200);
+    margin-bottom: 0.5rem; display: block; margin-left: auto; margin-right: auto;
+  }
+
+  .about-float-card {
+    position: absolute; bottom: -16px; right: -16px;
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .about-float-card strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; color: var(--sage-500);
+  }
+  .about-float-card span {
+    font-size: 0.78rem; color: var(--text-light);
+    font-weight: 400;
+  }
+
+  .about-text { padding-top: 0.5rem; }
+  .about-text p {
+    color: var(--text-mid); font-size: 1rem;
+    margin-bottom: 1.1rem; line-height: 1.8;
+  }
+
+  .credentials-row {
+    display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
+  }
+  .credential-chip {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.7rem 1.2rem;
+    background: var(--sage-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--sage-100);
+  }
+  .credential-chip strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem; color: var(--sage-600);
+    font-weight: 500;
+  }
+  .credential-chip span {
+    font-size: 0.8rem; color: var(--text-light);
+  }
+
+  /* ===== PHILOSOPHY CARDS ===== */
+  .philosophy { background: var(--pearl); }
+
+  .philosophy-header { margin-bottom: 3.5rem; }
+
+  .philosophy-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .phil-card {
+    background: var(--white);
+    padding: 2.25rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .phil-card::after {
+    content: '';
+    position: absolute; top: 0; left: 1.5rem; right: 1.5rem;
+    height: 3px; border-radius: 0 0 3px 3px;
+    transition: all 0.4s ease; opacity: 0;
+  }
+
+  .phil-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  .phil-card:hover::after { opacity: 1; }
+
+  .phil-card:nth-child(1)::after { background: var(--sage-400); }
+  .phil-card:nth-child(2)::after { background: var(--terracotta-400); }
+  .phil-card:nth-child(3)::after { background: var(--sky-400); }
+
+  .phil-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .phil-card:nth-child(1) .phil-icon { background: var(--sage-50); }
+  .phil-card:nth-child(2) .phil-icon { background: var(--terracotta-50); }
+  .phil-card:nth-child(3) .phil-icon { background: var(--sky-50); }
+
+  .phil-icon svg { width: 22px; height: 22px; }
+  .phil-card:nth-child(1) .phil-icon svg { color: var(--sage-500); }
+  .phil-card:nth-child(2) .phil-icon svg { color: var(--terracotta-500); }
+  .phil-card:nth-child(3) .phil-icon svg { color: var(--sky-400); }
+
+  .phil-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem; color: var(--bark);
+    margin-bottom: 0.6rem; font-weight: 500;
+  }
+
+  .phil-card p {
+    font-size: 0.92rem; color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* ===== MISSION BAND ===== */
+  .mission-band {
+    background: var(--bark);
+    padding: 5rem 2.5rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .mission-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(107,143,86,0.12), transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(212,149,106,0.1), transparent 50%);
+  }
+
+  .mission-band .mi {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 0 auto;
+  }
+
+  .mission-band blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.45; font-weight: 300; font-style: italic;
+    color: var(--sand); margin-bottom: 1.25rem;
+  }
+
+  .mission-band .attr {
+    font-size: 0.88rem; color: rgba(255,255,255,0.45);
+    font-weight: 400;
+  }
+
+  /* ===== APPROACH ===== */
+  .approach { background: var(--white); }
+
+  .approach-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+
+  .approach-card {
+    padding: 2.25rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .approach-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+
+  .approach-card:nth-child(1) { background: var(--sage-50); border-color: var(--sage-100); }
+  .approach-card:nth-child(2) { background: var(--terracotta-50); border-color: var(--terracotta-100); }
+  .approach-card:nth-child(3) { background: var(--lavender-50); border-color: var(--lavender-100); }
+
+  .approach-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem; font-weight: 300;
+    opacity: 0.15; line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem; color: var(--bark);
+    margin-bottom: 0.6rem; font-weight: 500;
+  }
+
+  .approach-card p {
+    font-size: 0.92rem; color: var(--text-mid); line-height: 1.75;
+  }
+
+  /* ===== EVENTS ===== */
+  .events { background: var(--pearl); }
+
+  .events-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 3rem;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .events-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .event-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .event-banner {
+    height: 160px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .event-card:nth-child(1) .event-banner {
+    background: linear-gradient(135deg, var(--sage-100), var(--sky-100));
+  }
+  .event-card:nth-child(2) .event-banner {
+    background: linear-gradient(135deg, var(--terracotta-100), var(--ochre-100));
+  }
+  .event-card:nth-child(3) .event-banner {
+    background: linear-gradient(135deg, var(--lavender-100), var(--sage-100));
+  }
+
+  .event-banner-icon {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .event-banner-icon svg { width: 26px; height: 26px; color: var(--bark-light); }
+
+  .event-date-badge {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.1;
+  }
+  .event-date-badge .month {
+    font-size: 0.6rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--terracotta-500);
+    font-weight: 600;
+  }
+  .event-date-badge .day {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem; color: var(--bark);
+    font-weight: 500;
+  }
+
+  .event-body { padding: 1.5rem 1.75rem 1.75rem; }
+
+  .event-tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+
+  .event-card:nth-child(1) .event-tag { background: var(--sage-50); color: var(--sage-600); }
+  .event-card:nth-child(2) .event-tag { background: var(--terracotta-50); color: var(--terracotta-500); }
+  .event-card:nth-child(3) .event-tag { background: var(--lavender-50); color: #7B62A8; }
+
+  .event-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem; color: var(--bark);
+    margin-bottom: 0.5rem; font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .event-body p {
+    font-size: 0.88rem; color: var(--text-light);
+    line-height: 1.65; margin-bottom: 1.25rem;
+  }
+
+  .event-meta {
+    display: flex; gap: 1.25rem;
+    font-size: 0.78rem; color: var(--text-light);
+    margin-bottom: 1.25rem;
+  }
+  .event-meta span {
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+  .event-meta svg { width: 14px; height: 14px; }
+
+  .btn-register {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.6rem 1.4rem;
+    background: var(--bark);
+    color: white; font-size: 0.82rem;
+    font-weight: 500; border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    border: none; cursor: pointer;
+  }
+  .btn-register:hover {
+    background: var(--sage-500);
+    transform: translateY(-1px);
+  }
+  .btn-register svg { width: 14px; height: 14px; }
+
+  .event-spots {
+    font-size: 0.75rem; color: var(--sage-500);
+    font-weight: 500; margin-left: 0.75rem;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials { background: var(--white); }
+
+  .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+  .testimonials-header .section-sub { margin: 0 auto; }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testi-card {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .testi-card:nth-child(odd) { background: var(--sage-50); }
+  .testi-card:nth-child(even) { background: var(--terracotta-50); }
+  .testi-card:nth-child(3) { background: var(--sky-50); }
+  .testi-card:nth-child(6) { background: var(--lavender-50); }
+
+  .testi-card:hover { transform: translateY(-3px); }
+
+  .testi-stars {
+    display: flex; gap: 2px; margin-bottom: 0.75rem;
+  }
+  .testi-stars svg { width: 14px; height: 14px; color: var(--ochre-400); fill: var(--ochre-400); }
+
+  .testi-card p {
+    font-size: 0.95rem; font-style: italic;
+    color: var(--text-mid); line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .testi-author {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--bark); letter-spacing: 0.02em;
+  }
+
+  /* ===== BLOG ===== */
+  .blog { background: var(--pearl); }
+
+  .blog-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 3rem;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .blog-featured {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+    display: flex; flex-direction: column;
+  }
+
+  .blog-featured:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .blog-featured-img {
+    height: 280px;
+    background: linear-gradient(140deg, var(--sage-100), var(--sky-100), var(--terracotta-100));
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .blog-featured-img .feat-icon {
+    width: 72px; height: 72px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-featured-img .feat-icon svg { width: 32px; height: 32px; color: var(--bark-light); }
+
+  .blog-body {
+    padding: 2rem 2.25rem 2.25rem;
+    flex: 1; display: flex; flex-direction: column;
+  }
+
+  .blog-meta {
+    display: flex; gap: 1rem; align-items: center;
+    margin-bottom: 0.75rem; flex-wrap: wrap;
+  }
+
+  .blog-category {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  .cat-wellness { background: var(--sage-50); color: var(--sage-600); }
+  .cat-culture { background: var(--terracotta-50); color: var(--terracotta-500); }
+  .cat-growth { background: var(--sky-50); color: var(--sky-400); }
+  .cat-family { background: var(--lavender-50); color: #7B62A8; }
+
+  .blog-date {
+    font-size: 0.78rem; color: var(--text-light);
+  }
+
+  .blog-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem; color: var(--bark);
+    margin-bottom: 0.6rem; font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .blog-body > p {
+    font-size: 0.92rem; color: var(--text-mid);
+    line-height: 1.75; margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .blog-author {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .blog-author-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--sage-100);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-author-avatar svg { width: 16px; height: 16px; color: var(--sage-400); }
+  .blog-author-info .aname {
+    font-size: 0.82rem; font-weight: 500; color: var(--bark);
+  }
+  .blog-author-info .arole {
+    font-size: 0.72rem; color: var(--text-light);
+  }
+
+  .blog-read-link {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.85rem; font-weight: 500; color: var(--sage-500);
+    margin-bottom: 1.25rem;
+    transition: gap 0.3s ease;
+  }
+  .blog-read-link:hover { gap: 0.6rem; }
+  .blog-read-link svg { width: 14px; height: 14px; }
+
+  .blog-side { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .blog-sm {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+    display: flex; flex-direction: column;
+  }
+  .blog-sm:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .blog-sm-img {
+    height: 130px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-sm:nth-child(1) .blog-sm-img {
+    background: linear-gradient(135deg, var(--terracotta-100), var(--ochre-100));
+  }
+  .blog-sm:nth-child(2) .blog-sm-img {
+    background: linear-gradient(135deg, var(--lavender-100), var(--sky-100));
+  }
+
+  .blog-sm-img .sm-icon {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-sm-img .sm-icon svg { width: 22px; height: 22px; color: var(--bark-light); }
+
+  .blog-sm .blog-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+  }
+
+  .blog-sm .blog-body h3 {
+    font-size: 1.1rem;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+
+  .contact-info { }
+  .contact-info > p {
+    font-size: 1.02rem; color: var(--text-mid);
+    line-height: 1.8; margin-bottom: 2.5rem;
+  }
+
+  .contact-row {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-icon {
+    width: 42px; height: 42px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-row:nth-child(1) .contact-icon { background: var(--sage-50); }
+  .contact-row:nth-child(2) .contact-icon { background: var(--terracotta-50); }
+  .contact-row:nth-child(3) .contact-icon { background: var(--sky-50); }
+  .contact-row:nth-child(4) .contact-icon { background: var(--lavender-50); }
+
+  .contact-icon svg { width: 20px; height: 20px; color: var(--text-mid); }
+
+  .contact-row-text strong {
+    display: block;
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--text-light);
+    font-weight: 600; margin-bottom: 0.15rem;
+  }
+  .contact-row-text span,
+  .contact-row-text a {
+    font-size: 1rem; color: var(--bark);
+    transition: color 0.2s ease;
+  }
+  .contact-row-text a:hover { color: var(--sage-500); }
+
+  .free-card {
+    background: linear-gradient(145deg, var(--sage-50), var(--sky-50));
+    border: 1.5px solid var(--sage-100);
+    border-radius: var(--radius-xl);
+    padding: 3rem;
+    position: relative; overflow: hidden;
+  }
+
+  .free-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sage-400), var(--sky-400), var(--terracotta-400));
+  }
+
+  .free-pill {
+    display: inline-block;
+    background: var(--white);
+    border: 1px solid var(--sage-100);
+    color: var(--sage-600);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.25rem;
+  }
+
+  .free-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; color: var(--bark);
+    margin-bottom: 0.75rem; font-weight: 500;
+  }
+
+  .free-card > p {
+    color: var(--text-mid); font-size: 0.95rem;
+    line-height: 1.75; margin-bottom: 2rem;
+  }
+
+  .free-card-actions {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bark);
+    padding: 4rem 2.5rem 2.5rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-inner {
+    max-width: 1140px; margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; flex-wrap: wrap;
+    gap: 2rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-brand .fl {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem; color: var(--sand);
+    margin-bottom: 0.35rem; font-weight: 400;
+  }
+  .footer-brand p { font-size: 0.85rem; }
+
+  .footer-nav {
+    display: flex; gap: 2rem;
+  }
+  .footer-nav a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.25s ease;
+  }
+  .footer-nav a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-copy {
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  /* ===== RESPONSIVENESS ===== */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      padding: 1rem 1.5rem 1.5rem;
+      border-radius: 0;
+      box-shadow: var(--shadow-lg);
+      gap: 0.25rem;
+      border: none;
+    }
+
+    .nav-links.open a {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .about-grid,
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    .philosophy-grid,
+    .approach-grid,
+    .events-grid,
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+
+    .blog-grid { grid-template-columns: 1fr; }
+
+    .about-visual { max-width: 350px; }
+    section { padding: 5rem 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .philosophy-grid,
+    .approach-grid,
+    .events-grid,
+    .testi-grid { grid-template-columns: 1fr; }
+
+    .inclusivity-inner { padding: 2.5rem 1.75rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .free-card-actions { flex-direction: column; }
+    .footer-top { flex-direction: column; }
+    .footer-nav { flex-direction: column; gap: 0.75rem; }
+    .events-header, .blog-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">GYST <span>Counselling</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#testimonials">Voices</a></li>
+    <li><a href="#contact" class="nav-cta">Book Free Session</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orb hero-orb--1"></div>
+  <div class="hero-orb hero-orb--2"></div>
+  <div class="hero-orb hero-orb--3"></div>
+  <div class="hero-orb hero-orb--4"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.264.26-2.467.73-3.56"/></svg></span>
+      A welcoming space for everyone
+    </div>
+    <h1>Becoming is both<br><em>exciting &amp; scary</em>,<br>at the same time</h1>
+    <p class="hero-sub">A culturally grounded, inclusive counselling practice where every person — regardless of background, identity, or origin — is honoured and welcome.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">
+        Book Your Free First Session
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+      </a>
+      <a href="#about" class="btn btn-secondary">
+        Learn About Valerie
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUSIVITY BANNER -->
+<section class="inclusivity">
+  <div class="inclusivity-inner reveal">
+    <div class="inclusivity-content">
+      <div class="inclusivity-icons">
+        <span class="inclusivity-icon">🌿</span>
+        <span class="inclusivity-icon">🤝</span>
+        <span class="inclusivity-icon">🌍</span>
+        <span class="inclusivity-icon">💜</span>
+        <span class="inclusivity-icon">☀️</span>
+      </div>
+      <h2>Everyone belongs here</h2>
+      <p>GYST Counselling is built on a foundation of respect for all peoples. Rooted in Indigenous teachings and open to every culture, background, and identity — we believe healing is a universal right. Whether you're Indigenous, a newcomer finding your footing, or anyone seeking support, this is your space.</p>
+      <div class="inclusivity-values">
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Indigenous-guided practice</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Culturally responsive</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Newcomer-friendly</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> LGBTQ2S+ affirming</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> All faiths &amp; beliefs</span>
+        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Accessible online counselling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-img-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+            Valerie's Photo
+          </div>
+        </div>
+        <div class="about-float-card">
+          <strong>20+</strong>
+          <span>Years in counselling<br>&amp; community work</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">About Valerie</p>
+        <h2 class="section-heading">Valerie M. Sipos, M.C., CCC</h2>
+        <p>Born in The Pas, Manitoba and raised in Canada's North, the Indigenous worldview is something I hold close and continues to guide me in everything I do. Third in a line of nine children, I learned at a very young age the value of simple basic truths.</p>
+        <p>I define myself physically, mentally, emotionally, and spiritually — and attend to each of these parts of myself daily. When life gets complicated, I have learned to simplify by returning to core values.</p>
+        <p>With years at Mount Royal University coaching Indigenous students and eight years at Hull Services supporting families healing from intergenerational trauma, I bring deep experience in culturally responsive care to my private practice. I'm a proud grandmother to six beautiful grandchildren who are the loves of my life.</p>
+        <div class="credentials-row">
+          <div class="credential-chip">
+            <strong>M.C.</strong>
+            <span>Master of Counselling</span>
+          </div>
+          <div class="credential-chip">
+            <strong>CCC</strong>
+            <span>Canadian Certified Counsellor</span>
+          </div>
+          <div class="credential-chip">
+            <strong>B.A.</strong>
+            <span>Psychology, U of Lethbridge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="section-inner">
+    <div class="philosophy-header reveal">
+      <p class="section-label">Counselling Philosophy</p>
+      <h2 class="section-heading">A journey that requires courage</h2>
+      <p class="section-sub">Counselling is a purposeful process that facilitates growth, direction, and wellness — it is all about change. A genuine interest in exploring what troubles you is the first brave step.</p>
+    </div>
+    <div class="philosophy-grid">
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg></div>
+        <h3>Collaborative</h3>
+        <p>Therapeutic change is the collaborative work done by counsellor and client — identifying goals as well as a plan to realize them together.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg></div>
+        <h3>Safe &amp; Confidential</h3>
+        <p>A purposefully safe and confidential place where we can explore the possibilities in change without judgment.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+        <h3>Guided by You</h3>
+        <p>My intention is to be guided by your needs — meeting you where you are with genuine empathy and positive regard for your person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BAND -->
+<section class="mission-band">
+  <div class="mi reveal">
+    <blockquote>"I would be honoured by your willingness to entrust me as a partner in this work."</blockquote>
+    <p class="attr">— Valerie M. Sipos</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Therapeutic Perspective</p>
+      <h2 class="section-heading">Grounded in culture, guided by theory</h2>
+      <p class="section-sub">My therapeutic perspective is influenced at its foundation by cultural teachings and integrates three evidence-based frameworks.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-num">01</div>
+        <h3>Existentialism</h3>
+        <p>A philosophical approach at whose core is the belief that each of us has the ability to find meaning in our lives. The counsellor works to understand you on your own subjective terms, encouraging reflection and taking responsibility for change.</p>
+      </div>
+      <div class="approach-card reveal">
+        <div class="approach-num">02</div>
+        <h3>Solutions-Focused Brief Therapy</h3>
+        <p>Concentrating on small, realistic, and sustainable goals that result in positive outcomes. You are empowered as the expert in who you are — we focus on solutions and results rather than dwelling on problems.</p>
+      </div>
+      <div class="approach-card reveal">
+        <div class="approach-num">03</div>
+        <h3>Family Systems Therapy</h3>
+        <p>Focusing on human problems from a relational perspective — we are best understood by how we interact within our systems. This explores intergenerational meanings, rules, processes, and cultural nuances.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="section-inner">
+    <div class="events-header reveal">
+      <div>
+        <p class="section-label">Community Events</p>
+        <h2 class="section-heading">Upcoming gatherings</h2>
+        <p class="section-sub">Join us for workshops, circles, and community events hosted at our local HOA. All are welcome — registration is open.</p>
+      </div>
+      <a href="events.html" class="btn btn-secondary" style="flex-shrink:0;">View All Events <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></a>
+    </div>
+    <div class="events-grid">
+      <!-- Event 1 -->
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Mar</div>
+            <div class="day">15</div>
+          </div>
+          <div class="event-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg></div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Workshop</span>
+          <h3>Wellness Through Cultural Connection</h3>
+          <p>An open workshop exploring how cultural identity strengthens mental wellness. All backgrounds welcome.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 2:00 – 4:00 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <button class="btn-register">Register Now <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></button>
+          <span class="event-spots">12 spots left</span>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Mar</div>
+            <div class="day">22</div>
+          </div>
+          <div class="event-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Community Circle</span>
+          <h3>Newcomers' Wellness Circle</h3>
+          <p>A gentle, guided sharing circle for newcomers to Canada navigating the emotional journey of settling into a new home.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 6:00 – 7:30 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <button class="btn-register">Register Now <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></button>
+          <span class="event-spots">8 spots left</span>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-card reveal">
+        <div class="event-banner">
+          <div class="event-date-badge">
+            <div class="month">Apr</div>
+            <div class="day">05</div>
+          </div>
+          <div class="event-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg></div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Seminar</span>
+          <h3>Understanding Family Systems</h3>
+          <p>An educational evening exploring how family dynamics shape our wellbeing — and how to foster healthier patterns.</p>
+          <div class="event-meta">
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg> 7:00 – 9:00 PM</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg> HOA Community Room</span>
+          </div>
+          <button class="btn-register">Register Now <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></button>
+          <span class="event-spots">20 spots left</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="testimonials-header reveal">
+      <p class="section-label">Client Voices</p>
+      <h2 class="section-heading">What clients are saying</h2>
+      <p class="section-sub">Real words from real people who have walked this journey.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"Valerie has a way about her that has me leaving her office with renewed hope. I always look forward to the time with her."</p>
+        <span class="testi-author">— C.P.</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"I felt instantly comfortable… she just made me feel so normal and I felt I could just trust her immediately."</p>
+        <span class="testi-author">— B.A.</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"It was no time at all before we got right down to business. I have been to counselling before but it never seemed to go anywhere."</p>
+        <span class="testi-author">— W.P.</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"She has a way of focusing on positive things and I leave feeling good about myself!"</p>
+        <span class="testi-author">— H.G.</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"Sitting with her has me feeling so safe. It's like the space is all mine and she's got my back."</p>
+        <span class="testi-author">— J.W.</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p>"I found that Valerie was a very approachable person and gave feedback that was very relaxing."</p>
+        <span class="testi-author">— D.W.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="section-inner">
+    <div class="blog-header reveal">
+      <div>
+        <p class="section-label">From the Blog</p>
+        <h2 class="section-heading">Insights &amp; reflections</h2>
+        <p class="section-sub">Thoughts on wellness, cultural identity, growth, and the journey of becoming.</p>
+      </div>
+      <a href="blog.html" class="btn btn-secondary" style="flex-shrink:0;">All Posts <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></a>
+    </div>
+    <div class="blog-grid">
+      <!-- Featured Post -->
+      <article class="blog-featured reveal">
+        <div class="blog-featured-img">
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-category cat-culture">Culture &amp; Healing</span>
+            <span class="blog-date">February 12, 2026 · 8 min read</span>
+          </div>
+          <h3>Returning to Core Values: How Indigenous Teachings Guide Modern Wellness</h3>
+          <p>In a world that moves fast and asks us to keep up, there is profound wisdom in returning to the simple truths taught by our elders. This post explores how grounding ourselves in the physical, mental, emotional, and spiritual dimensions of wellness can bring clarity to even the most complicated seasons of life.</p>
+          <a href="#" class="blog-read-link">Read full article <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></a>
+          <div class="blog-author">
+            <div class="blog-author-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div>
+            <div class="blog-author-info">
+              <div class="aname">Valerie M. Sipos</div>
+              <div class="arole">M.C., CCC — Founder, GYST Counselling</div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- Side Posts -->
+      <div class="blog-side">
+        <article class="blog-sm reveal">
+          <div class="blog-sm-img">
+            <div class="sm-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582"/></svg></div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-category cat-growth">Personal Growth</span>
+              <span class="blog-date">January 28, 2026 · 5 min read</span>
+            </div>
+            <h3>Finding Home: Navigating Identity as a Newcomer to Canada</h3>
+            <p>For those settling into a new country, the emotional journey can be as challenging as the practical one. Here's how counselling can help.</p>
+            <a href="#" class="blog-read-link">Read article <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></a>
+            <div class="blog-author">
+              <div class="blog-author-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div>
+              <div class="blog-author-info">
+                <div class="aname">Valerie M. Sipos</div>
+                <div class="arole">M.C., CCC</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="blog-sm reveal">
+          <div class="blog-sm-img">
+            <div class="sm-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg></div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-category cat-family">Family Systems</span>
+              <span class="blog-date">January 10, 2026 · 6 min read</span>
+            </div>
+            <h3>Breaking Cycles: Understanding Intergenerational Patterns in Your Family</h3>
+            <p>We carry more from our families than we realize. Understanding these patterns is the first step toward building healthier relationships.</p>
+            <a href="#" class="blog-read-link">Read article <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg></a>
+            <div class="blog-author">
+              <div class="blog-author-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div>
+              <div class="blog-author-info">
+                <div class="aname">Valerie M. Sipos</div>
+                <div class="arole">M.C., CCC</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-heading">Ready to begin?</h2>
+        <p>In any counselling relationship, "good fit" is essential. Both parties need to feel like they will work well together. You deserve a space where you feel truly seen and understood.</p>
+
+        <div class="contact-row">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg></div>
+          <div class="contact-row-text"><strong>Phone</strong><a href="tel:3689966230">368-996-6230</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></div>
+          <div class="contact-row-text"><strong>Email</strong><a href="mailto:info@gystservices.ca">info@gystservices.ca</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
+          <div class="contact-row-text"><strong>Hours</strong><span>Monday – Thursday, 12:00 PM – 8:00 PM</span></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg></div>
+          <div class="contact-row-text"><strong>Location</strong><span>Online counselling — available wherever you are</span></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="free-card">
+          <span class="free-pill">✦ Complimentary</span>
+          <h3>Your first session is free</h3>
+          <p>Good fit matters. That's why your initial session comes at no charge — so we can both feel confident about working together. Book by phone or email and we'll find a time that works.</p>
+          <div class="free-card-actions">
+            <a href="tel:3689966230" class="btn btn-primary">Call to Book <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg></a>
+            <a href="mailto:info@gystservices.ca" class="btn btn-secondary">Email Us <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fl">GYST Counselling Inc.</div>
+        <p>Valerie M. Sipos, M.C., CCC — Calgary, Alberta</p>
+        <p style="margin-top:0.3rem;">A welcoming space for all peoples.</p>
+      </div>
+      <div class="footer-nav">
+        <a href="#about">About</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#events">Events</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; 2026 GYST Counselling Inc. All rights reserved.</span>
+      <span>We respectfully acknowledge the traditional territories of the Blackfoot Confederacy and the people of Treaty 7.</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile toggle
+  const toggle = document.getElementById('mobileToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal with stagger
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Event registration buttons (demo)
+  document.querySelectorAll('.btn-register').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const orig = this.innerHTML;
+      this.innerHTML = '✓ Registered!';
+      this.style.background = 'var(--sage-500)';
+      setTimeout(() => {
+        this.innerHTML = orig;
+        this.style.background = '';
+      }, 2000);
+    });
+  });
+</script>
+</body>
+</html>

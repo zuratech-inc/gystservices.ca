@@ -1,0 +1,9 @@
+[
+  { "label": "About",        "url": "/#about",        "isCta": false },
+  { "label": "Philosophy",   "url": "/#philosophy",   "isCta": false },
+  { "label": "Approach",     "url": "/#approach",     "isCta": false },
+  { "label": "Events",       "url": "/events/",       "isCta": false },
+  { "label": "Blog",         "url": "/blog/",         "isCta": false },
+  { "label": "Testimonials", "url": "/#testimonials", "isCta": false },
+  { "label": "Book Free Session", "url": "/#contact", "isCta": true }
+]

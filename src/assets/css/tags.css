@@ -1,0 +1,153 @@
+/* =====================================================
+   tags.css — Category pill tags and filter buttons
+   Extracted from prototype/blog.html and events.html.
+   Category colours map to the brand accent palette.
+   ===================================================== */
+
+/* ── Blog category pills ── */
+.blog-category {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Category colour variants */
+.cat-wellness   { background: var(--sage-50);       color: var(--sage-600); }
+.cat-culture    { background: var(--terracotta-50); color: var(--terracotta-500); }
+.cat-growth     { background: var(--sky-50);        color: var(--sky-400); }
+.cat-family     { background: var(--lavender-50);   color: #7B62A8; }
+.cat-community  { background: var(--ochre-50);      color: var(--ochre-400); }
+
+/* ── Event type pills ── */
+.event-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+
+.tag-workshop { background: var(--sage-50);       color: var(--sage-600); }
+.tag-circle   { background: var(--terracotta-50); color: var(--terracotta-500); }
+.tag-seminar  { background: var(--lavender-50);   color: #7B62A8; }
+.tag-talk     { background: var(--sky-50);        color: var(--sky-400); }
+.tag-retreat  { background: var(--ochre-50);      color: var(--ochre-400); }
+
+/* ── Post tags (small inline tags in card footers and article) ── */
+.post-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.post-tag {
+  font-size: 0.68rem;
+  color: var(--text-light);
+  background: var(--pearl);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+/* ── Prose-level post tags (blog detail) ── */
+.ptag {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  background: var(--pearl);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.ptag:hover {
+  background: var(--sage-50);
+  color: var(--sage-600);
+}
+
+/* ── Value tags (inclusivity banner) ── */
+.value-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-weight: 400;
+}
+
+.value-tag svg {
+  width: 14px;
+  height: 14px;
+  color: var(--sage-400);
+  flex-shrink: 0;
+}
+
+/* ── Filter bar (blog/events listing pages) ── */
+.filters-bar {
+  padding: 1.5rem 2.5rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 50;
+}
+
+.filters-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.25rem;
+}
+
+.filter-btn {
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 400;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans);
+}
+
+.filter-btn:hover {
+  border-color: var(--sage-200);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--sage-500);
+  color: white;
+  border-color: var(--sage-500);
+}
+
+@media (max-width: 600px) {
+  .filters-bar {
+    padding: 1rem 1.25rem;
+  }
+}

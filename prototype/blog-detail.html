@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — GYST Counselling Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--white:#fff;--pearl:#F5F3F0;--sand:#E8E2D8;--sage-50:#F2F5F0;--sage-100:#E1E8DC;--sage-200:#C3D1B8;--sage-400:#8BA876;--sage-500:#6B8F56;--sage-600:#557243;--terracotta-50:#FDF5F0;--terracotta-100:#F9E5D8;--terracotta-500:#C07A4C;--sky-50:#F0F7FB;--sky-100:#DCE9F2;--sky-400:#6BA4C5;--lavender-50:#F5F2F8;--lavender-100:#E6DFF0;--ochre-50:#FBF7EF;--ochre-100:#F3EBD6;--ochre-400:#D4A843;--bark:#2E2923;--bark-light:#4A4239;--text:#3B3630;--text-mid:#6B645B;--text-light:#918981;--border:#E5E1DB;--shadow-sm:0 1px 3px rgba(46,41,35,.04);--shadow-md:0 4px 20px rgba(46,41,35,.06);--shadow-lg:0 12px 40px rgba(46,41,35,.08);--r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:28px;--r-full:100px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:'Outfit',sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-weight:300}a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--bark);letter-spacing:-.03em}.nav-logo span{color:var(--sage-500);font-weight:300}
+.nav-links{display:flex;gap:.4rem;list-style:none;align-items:center;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);padding:.35rem;border-radius:var(--r-full);border:1px solid rgba(0,0,0,.04)}
+.nav-links a{font-size:.82rem;font-weight:400;color:var(--text-mid);padding:.5rem 1.15rem;border-radius:var(--r-full);transition:all .25s}.nav-links a:hover{color:var(--text);background:var(--pearl)}
+.nav-links .cta{background:var(--sage-500);color:#fff;font-weight:500;padding:.5rem 1.4rem}.nav-links .cta:hover{background:var(--sage-600);color:#fff}
+.mob{display:none;background:0;border:0;cursor:pointer;width:32px;height:24px;position:relative;z-index:10}.mob span{display:block;width:100%;height:2px;background:var(--bark);position:absolute;border-radius:2px;transition:all .3s}.mob span:nth-child(1){top:0}.mob span:nth-child(2){top:11px}.mob span:nth-child(3){top:22px}.mob.open span:nth-child(1){top:11px;transform:rotate(45deg)}.mob.open span:nth-child(2){opacity:0}.mob.open span:nth-child(3){top:11px;transform:rotate(-45deg)}
+
+/* HERO */
+.post-hero{padding:7rem 2.5rem 0;background:var(--white)}
+.post-hero-inner{max-width:1140px;margin:0 auto}
+.bc{font-size:.82rem;color:var(--text-light);display:flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.bc a{color:var(--sage-500);transition:color .2s}.bc a:hover{color:var(--sage-600)}
+.post-banner{border-radius:var(--r-xl);overflow:hidden;height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.post-banner-icon{width:52px;height:52px;background:rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.post-banner-icon svg{width:24px;height:24px;color:var(--bark-light)}
+
+/* LAYOUT */
+.post-layout{max-width:1140px;margin:0 auto;padding:3rem 2.5rem 5rem;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start}
+
+/* ARTICLE */
+.article-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.cat{display:inline-block;padding:.2rem .7rem;border-radius:var(--r-full);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.cat-culture{background:var(--terracotta-50);color:var(--terracotta-500)}.cat-growth{background:var(--sky-50);color:var(--sky-400)}.cat-family{background:var(--lavender-50);color:#7B62A8}.cat-wellness{background:var(--sage-50);color:var(--sage-600)}.cat-community{background:var(--ochre-50);color:var(--ochre-400)}
+.meta-text{font-size:.82rem;color:var(--text-light)}
+.article-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--bark);line-height:1.2;font-weight:400;margin-bottom:1.5rem;letter-spacing:-.015em}
+
+.article-author-bar{display:flex;align-items:center;gap:.85rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.aa-avatar{width:44px;height:44px;border-radius:50%;background:var(--sage-100);display:flex;align-items:center;justify-content:center}
+.aa-avatar svg{width:22px;height:22px;color:var(--sage-400)}
+.aa-name{font-size:.92rem;font-weight:500;color:var(--bark)}
+.aa-role{font-size:.78rem;color:var(--text-light)}
+
+/* PROSE */
+.prose p{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem}
+.prose h2{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--bark);margin:2.5rem 0 .75rem;font-weight:500;line-height:1.3}
+.prose h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--bark);margin:2rem 0 .6rem;font-weight:500}
+.prose blockquote{margin:2rem 0;padding:1.5rem 2rem;background:var(--sage-50);border-left:3px solid var(--sage-400);border-radius:0 var(--r-md) var(--r-md) 0;font-style:italic;color:var(--text-mid);font-size:1.08rem;line-height:1.8}
+.prose ul,.prose ol{margin:0 0 1.25rem 1.5rem;color:var(--text-mid);font-size:1rem;line-height:1.9}
+.prose li{margin-bottom:.4rem}
+.prose .highlight-box{padding:1.5rem 2rem;background:var(--pearl);border-radius:var(--r-md);margin:1.5rem 0}
+.prose .highlight-box h4{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--bark);margin-bottom:.4rem;font-weight:500}
+
+/* TAGS */
+.post-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.ptag{font-size:.78rem;color:var(--text-light);background:var(--pearl);padding:.3rem .75rem;border-radius:var(--r-full);transition:all .2s}
+.ptag:hover{background:var(--sage-50);color:var(--sage-600)}
+
+/* SIDEBAR */
+.post-sidebar{position:sticky;top:80px}
+.sidebar-card{background:var(--pearl);border-radius:var(--r-lg);padding:1.75rem;margin-bottom:1.5rem}
+.sidebar-card h4{font-family:'Fraunces',serif;font-size:1rem;color:var(--bark);margin-bottom:1rem;font-weight:500}
+
+/* Author bio card */
+.author-bio{text-align:center}
+.author-bio .bio-avatar{width:64px;height:64px;border-radius:50%;background:var(--sage-100);display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+.author-bio .bio-avatar svg{width:30px;height:30px;color:var(--sage-400)}
+.author-bio .bio-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--bark);font-weight:500;margin-bottom:.15rem}
+.author-bio .bio-cred{font-size:.78rem;color:var(--text-light);margin-bottom:.75rem}
+.author-bio .bio-text{font-size:.88rem;color:var(--text-mid);line-height:1.7}
+
+/* Table of contents */
+.toc a{display:block;padding:.45rem 0;font-size:.88rem;color:var(--text-mid);border-bottom:1px solid rgba(0,0,0,.04);transition:all .2s}
+.toc a:last-child{border:0}
+.toc a:hover{color:var(--sage-500);padding-left:.5rem}
+
+/* Related posts */
+.related-post{display:flex;gap:.85rem;padding:.85rem 0;border-bottom:1px solid rgba(0,0,0,.04);transition:all .2s}
+.related-post:last-child{border:0}
+.related-post:hover{padding-left:.3rem}
+.rp-thumb{width:52px;height:52px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rp-thumb svg{width:20px;height:20px;color:var(--bark-light);opacity:.5}
+.rp-info h5{font-size:.85rem;color:var(--bark);font-weight:500;line-height:1.3;margin-bottom:.15rem}
+.rp-info span{font-size:.72rem;color:var(--text-light)}
+
+/* CTA card */
+.cta-card{background:var(--white);border:1.5px solid var(--sage-100);border-radius:var(--r-lg);padding:1.75rem;text-align:center;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage-400),var(--sky-400))}
+.cta-card h4{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--bark);margin-bottom:.4rem;font-weight:500}
+.cta-card p{font-size:.85rem;color:var(--text-mid);line-height:1.6;margin-bottom:1.25rem}
+.btn-sm{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.4rem;border-radius:var(--r-full);font-size:.82rem;font-weight:500;font-family:inherit;border:0;cursor:pointer;background:var(--sage-500);color:#fff;transition:all .3s}.btn-sm:hover{background:var(--sage-600);transform:translateY(-1px)}
+
+/* NAV BOTTOM */
+.post-nav{max-width:1140px;margin:0 auto;padding:0 2.5rem 4rem;display:flex;justify-content:space-between;gap:1.5rem}
+.pn-link{flex:1;padding:1.25rem 1.5rem;background:var(--pearl);border-radius:var(--r-md);transition:all .3s}
+.pn-link:hover{background:var(--sage-50);transform:translateY(-2px)}
+.pn-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);font-weight:600;margin-bottom:.25rem}
+.pn-title{font-family:'Fraunces',serif;font-size:.95rem;color:var(--bark);font-weight:500;line-height:1.3}
+.pn-link.next{text-align:right}
+
+.back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--sage-500);font-weight:500;font-size:.9rem;transition:gap .3s}.back-link:hover{gap:.7rem}
+.back-link svg{width:16px;height:16px}
+
+.not-found{text-align:center;padding:10rem 2rem 5rem}
+.not-found h1{font-family:'Fraunces',serif;font-size:2rem;color:var(--bark);margin-bottom:.5rem}
+.not-found p{color:var(--text-mid);margin-bottom:1.5rem}
+
+footer{background:var(--bark);padding:3rem 2.5rem 2rem;color:rgba(255,255,255,.4)}
+.ft{max-width:1140px;margin:0 auto}.ftt{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.ftb .ftl{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--sand);margin-bottom:.35rem}.ftb p{font-size:.85rem}
+.ftn{display:flex;gap:2rem}.ftn a{font-size:.85rem;color:rgba(255,255,255,.45);transition:color .25s}.ftn a:hover{color:rgba(255,255,255,.8)}
+.ftc{margin-top:1.5rem;font-size:.78rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+@media(max-width:960px){.nav-links{display:none}.mob{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:1rem 1.5rem 1.5rem;box-shadow:var(--shadow-lg);gap:.25rem;border:0}.nav-links.open a{padding:.75rem 1rem;font-size:.9rem}
+  .post-layout{grid-template-columns:1fr;gap:2.5rem}.post-sidebar{position:static}
+}
+@media(max-width:600px){.post-hero{padding:6rem 1.5rem 0}.post-layout{padding:2rem 1.5rem 4rem}.post-banner{height:120px}.post-nav{flex-direction:column;padding:0 1.5rem 3rem}.ftt,.ftn{flex-direction:column}.ftn{gap:.75rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="gyst-v2.html" class="nav-logo">GYST <span>Counselling</span></a>
+  <ul class="nav-links" id="nl">
+    <li><a href="gyst-v2.html#about">About</a></li>
+    <li><a href="gyst-v2.html#philosophy">Philosophy</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html" style="color:var(--text);font-weight:500">Blog</a></li>
+    <li><a href="gyst-v2.html#testimonials">Voices</a></li>
+    <li><a href="gyst-v2.html#contact" class="cta">Book Free Session</a></li>
+  </ul>
+  <button class="mob" id="mt" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="page"></div>
+
+<footer><div class="ft"><div class="ftt">
+  <div class="ftb"><div class="ftl">GYST Counselling Inc.</div><p>Valerie M. Sipos, M.C., CCC</p></div>
+  <div class="ftn"><a href="gyst-v2.html#about">About</a><a href="events.html">Events</a><a href="blog.html">Blog</a><a href="gyst-v2.html#contact">Contact</a></div>
+</div><div class="ftc"><span>&copy; 2026 GYST Counselling Inc.</span><span>We respectfully acknowledge the traditional territories of the Blackfoot Confederacy and the people of Treaty 7.</span></div></div></footer>
+
+<script>
+var mt=document.getElementById("mt"),nl=document.getElementById("nl");
+mt.onclick=function(){nl.classList.toggle("open");mt.classList.toggle("open")};
+nl.querySelectorAll("a").forEach(function(a){a.onclick=function(){nl.classList.remove("open");mt.classList.remove("open")}});
+
+var GRADS=[
+  "linear-gradient(140deg,#E1E8DC,#DCE9F2,#F9E5D8)","linear-gradient(135deg,#F9E5D8,#F3EBD6)",
+  "linear-gradient(135deg,#E6DFF0,#DCE9F2)","linear-gradient(135deg,#E1E8DC,#C3D1B8)",
+  "linear-gradient(135deg,#F3EBD6,#F9E5D8)","linear-gradient(135deg,#DCE9F2,#E6DFF0)"
+];
+
+var POSTS=[
+  {id:1,cat:"Culture & Healing",cc:"cat-culture",title:"Returning to Core Values: How Indigenous Teachings Guide Modern Wellness",
+   date:"February 12, 2026",read:"8 min read",tags:["Indigenous Wellness","Holistic Health","Cultural Identity"],
+   toc:["The wisdom of simplicity","Physical, mental, emotional, spiritual","When life gets complicated","Returning to what matters","Practical steps forward"],
+   body:'<p>In a world that moves fast and asks us to keep up, there is profound wisdom in returning to the simple truths taught by our elders. These teachings are not relics of the past but living frameworks for navigating the complexity of modern life.</p><h2>The Wisdom of Simplicity</h2><p>Growing up in the North, I learned early that the most important truths are often the simplest ones. In small, isolated communities, you learn quickly what matters: connection, respect, honesty, and care for one another. These values were not taught in classrooms but lived in everyday interactions.</p><blockquote>When life gets complicated, as it often does, I have learned to simplify by returning to core values.</blockquote><h2>Physical, Mental, Emotional, Spiritual</h2><p>Indigenous teachings offer a holistic framework for understanding ourselves. Rather than separating mind from body, thought from feeling, we are invited to see ourselves as integrated beings with four interconnected dimensions: physical, mental, emotional, and spiritual.</p><p>Each dimension needs daily attention. When we neglect one, the others feel the strain. A physical ailment affects our mood. Emotional turmoil clouds our thinking. Spiritual disconnection leaves us feeling lost even when everything else seems fine on the surface.</p><h2>When Life Gets Complicated</h2><p>Modern life has a way of pulling us in countless directions. Work demands, family obligations, social pressures, financial worries, and the constant noise of digital life can leave us feeling fragmented and overwhelmed.</p><p>In these moments, the instinct is often to do more, try harder, and push through. But there is another way.</p><div class="highlight-box"><h4>A Simple Practice</h4><p>Each morning, pause and check in with yourself across all four dimensions. Ask: How is my body feeling? What is on my mind? What emotions am I carrying? What feeds my spirit today?</p></div><h2>Returning to What Matters</h2><p>The practice of returning to core values is not about escaping complexity but about finding clarity within it. When we know what we stand on, we can navigate uncertainty with greater confidence and less anxiety.</p><p>This is true whether you are Indigenous, a newcomer finding your way, or anyone navigating a life transition. The specifics of our cultural teachings may differ, but the principle is universal: ground yourself in what matters most, and the path forward becomes clearer.</p><h2>Practical Steps Forward</h2><ul><li>Identify your three to five core values and write them down</li><li>Create a daily check-in practice across physical, mental, emotional, and spiritual dimensions</li><li>When feeling overwhelmed, pause and ask: what would my values guide me to do right now?</li><li>Share these practices with someone you trust</li><li>Consider counselling as a space to explore and strengthen your connection to your values</li></ul><p>If you are interested in exploring how cultural teachings and counselling can support your wellness journey, I would be honoured to walk alongside you in that work.</p>'},
+  {id:2,cat:"Personal Growth",cc:"cat-growth",title:"Finding Home: Navigating Identity as a Newcomer",
+   date:"January 28, 2026",read:"5 min read",tags:["Newcomers","Identity","Transitions"],
+   toc:["More than a change of address","The emotional landscape","Building new roots","You belong here"],
+   body:'<p>Moving to a new place is about so much more than logistics. Behind every packed box and filled-out form is a person carrying an entire life of memories, relationships, and identity into unfamiliar territory.</p><h2>More Than a Change of Address</h2><p>When we talk about newcomers settling in, we often focus on the practical: finding housing, learning systems, building a resume. These are important, but they are only half the story.</p><p>The other half is deeply emotional. It involves grief for what was left behind, anxiety about what lies ahead, and the profound disorientation of no longer being understood in the ways you are accustomed to.</p><h2>The Emotional Landscape</h2><p>Many newcomers describe a feeling of being between worlds. The place you came from is no longer your daily reality, but the new place does not yet feel like home. This in-between space can be lonely and confusing.</p><blockquote>Home is not just a place. It is a feeling of being known, understood, and accepted for who you are.</blockquote><p>Common emotional experiences include a sense of loss for familiar social networks, frustration when cultural norms are misunderstood, identity confusion as you navigate between old and new ways of being, and isolation even in crowded spaces.</p><h2>Building New Roots</h2><p>Building a sense of belonging takes time, and it does not require abandoning who you are. The goal is not to replace your identity but to expand it. You can honour where you come from while growing into where you are.</p><div class="highlight-box"><h4>Three Steps Toward Belonging</h4><p>Connect with others who share your experience. Explore what parts of your cultural identity you want to carry forward. Give yourself permission to grieve what you have lost while remaining open to what you might gain.</p></div><h2>You Belong Here</h2><p>If you are navigating this journey, know that your feelings are valid and your experience matters. Counselling can provide a safe, culturally responsive space to process the emotional dimensions of transition and build a sense of home from the inside out.</p>'},
+  {id:3,cat:"Family Systems",cc:"cat-family",title:"Breaking Cycles: Understanding Intergenerational Patterns in Your Family",
+   date:"January 10, 2026",read:"6 min read",tags:["Family Dynamics","Intergenerational","Healing"],
+   toc:["What are intergenerational patterns","How patterns travel","Recognizing your patterns","Breaking the cycle"],
+   body:'<p>We carry more from our families than we realize. The way we handle conflict, express love, manage stress, and relate to others is deeply shaped by patterns that may stretch back generations.</p><h2>What Are Intergenerational Patterns</h2><p>Family Systems Therapy teaches us that we are best understood not as isolated individuals but as members of interconnected systems. Within these systems, patterns of behaviour, belief, and emotional response are passed from one generation to the next.</p><p>These patterns are not always harmful. Many families pass down beautiful traditions of resilience, generosity, and connection. But some patterns cause pain, and they often operate below our conscious awareness.</p><h2>How Patterns Travel</h2><p>Intergenerational patterns travel through both explicit teaching and implicit modelling. We learn how to be in the world by watching the people closest to us. A child who grows up in a home where emotions are never discussed learns that feelings are not safe to express. This lesson carries forward.</p><blockquote>The patterns we do not examine are the patterns we repeat.</blockquote><h2>Recognizing Your Patterns</h2><p>The first step toward change is awareness. Consider these questions: What were the unspoken rules in your family growing up? How was conflict handled? How was love expressed? What roles did different family members play? Which of these patterns do you notice in your own life today?</p><div class="highlight-box"><h4>Reflection Exercise</h4><p>Draw a simple family tree going back two generations. For each person, note one positive trait and one challenging pattern. Look for what repeats. What patterns do you want to carry forward, and which do you want to change?</p></div><h2>Breaking the Cycle</h2><p>Breaking intergenerational cycles is not about blaming previous generations. It is about understanding, with compassion, how certain patterns developed and making conscious choices about what to carry forward.</p><p>This work takes courage. It means sitting with uncomfortable truths and choosing differently, even when the old way feels more familiar. Counselling provides a supported space for this exploration, helping you understand your family system and make intentional choices about the patterns you pass on.</p>'},
+  {id:4,cat:"Wellness",cc:"cat-wellness",title:"The Four Dimensions of Self: A Framework for Daily Balance",
+   date:"December 20, 2025",read:"7 min read",tags:["Self-Care","Balance","Daily Practice"],
+   toc:["Beyond the buzzword","The four dimensions","Daily practice","When one dimension suffers"],
+   body:'<p>Self-care has become a buzzword, but at its core it points to something profound: the daily practice of tending to who we are across all dimensions of our being.</p><h2>Beyond the Buzzword</h2><p>In Indigenous teachings, wellness is understood holistically. We are not just bodies, not just minds, not just hearts, not just spirits. We are all of these things at once, and each dimension needs regular attention.</p><h2>The Four Dimensions</h2><p>The physical dimension encompasses our bodies, movement, rest, nutrition, and the spaces we inhabit. The mental dimension includes our thoughts, learning, curiosity, and the stories we tell ourselves. The emotional dimension holds our feelings, relationships, capacity for joy, and ability to process grief. The spiritual dimension connects us to meaning, purpose, tradition, and something larger than ourselves.</p><blockquote>Aligned with cultural teachings, I define myself physically, mentally, emotionally, and spiritually and attend to each of these parts of myself daily.</blockquote><h2>Daily Practice</h2><p>This does not require hours of meditation or elaborate routines. It can be as simple as a morning check-in. Take a few moments each day to ask yourself: What does my body need today? What is occupying my mind? What am I feeling? What nourishes my spirit?</p><div class="highlight-box"><h4>Quick Daily Check-In</h4><p>Physical: Am I rested? Do I need to move? Mental: What is weighing on me? What am I learning? Emotional: What am I feeling? Have I connected with someone today? Spiritual: What gives me meaning? Have I made space for it?</p></div><h2>When One Dimension Suffers</h2><p>When we neglect one dimension, it affects the others. Physical exhaustion clouds thinking. Unprocessed emotions create tension in the body. Spiritual disconnection can manifest as purposelessness that no amount of productivity can fix.</p><p>The invitation is not perfection but awareness. Simply noticing which dimension needs attention is itself an act of care.</p>'},
+  {id:5,cat:"Community",cc:"cat-community",title:"Why Community Circles Matter More Than Ever",
+   date:"December 5, 2025",read:"4 min read",tags:["Community","Connection","Sharing Circles"],
+   toc:["The loneliness epidemic","The power of circle","What happens in circle","Join us"],
+   body:'<p>In an age of digital connection and physical isolation, the ancient practice of gathering in circle to share, listen, and witness one another has never been more important.</p><h2>The Loneliness Epidemic</h2><p>Despite being more digitally connected than ever, many people report feeling profoundly alone. Social media creates an illusion of connection without the depth that true human interaction provides. We see curated highlights but rarely sit with someone in their full, unfiltered experience.</p><h2>The Power of Circle</h2><p>Sharing circles are one of the oldest forms of human connection. They exist across virtually every culture. At their core, they offer something simple but radical: a space where every voice matters and every person is seen.</p><blockquote>When we sit in circle, we remember that we are not alone in our struggles and that our stories have the power to heal both ourselves and others.</blockquote><h2>What Happens in Circle</h2><p>A well-facilitated circle creates the conditions for authentic connection. There are typically a few simple guidelines: speak from the heart, listen without judgment, take only the time you need, and honour what is shared as confidential.</p><p>Within this container, something remarkable often happens. People who arrived feeling isolated discover shared experiences. Those who felt their struggles were unique find common ground. The simple act of being truly heard can be profoundly healing.</p><h2>Join Us</h2><p>We host regular community circles at our local HOA. Whether you are looking for connection, processing a life transition, or simply curious, you are welcome. Check our events page for upcoming gatherings.</p>'},
+  {id:6,cat:"Culture & Healing",cc:"cat-culture",title:"Honouring Multiple Identities: When You Belong to More Than One Culture",
+   date:"November 18, 2025",read:"6 min read",tags:["Multicultural","Identity","Integration"],
+   toc:["The both/and of identity","Pressure to choose","Integration not erasure","Finding your way"],
+   body:'<p>Many people hold more than one cultural identity. Rather than choosing between them, counselling can help integrate these into a richer, more complete sense of self.</p><h2>The Both/And of Identity</h2><p>For people who belong to more than one culture, identity is rarely a simple thing. You might be Indigenous and urban. A newcomer who is also deeply rooted in your homeland. A child of parents from different traditions. Each of these intersections creates a unique experience that defies simple categorization.</p><h2>Pressure to Choose</h2><p>Society often pressures us to fit into neat categories. Choose one box. Pick a side. Identify with this group or that one. This pressure can create internal conflict, as if honouring one part of yourself means betraying another.</p><blockquote>You do not have to choose between the parts of yourself. Integration, not erasure, is the path to wholeness.</blockquote><h2>Integration Not Erasure</h2><p>The goal of culturally responsive counselling is never to help you abandon any part of who you are. Instead, it is about creating space to explore all dimensions of your identity and finding ways to honour each one.</p><div class="highlight-box"><h4>Reflection</h4><p>Consider the different cultural identities you hold. What values does each one give you? Where do they complement each other? Where do they create tension? What would it look like to honour all of them?</p></div><h2>Finding Your Way</h2><p>There is no single right way to navigate multiple identities. Your path is your own. What matters is that you have the space and support to explore it honestly, without pressure to conform to any single narrative about who you should be.</p>'},
+];
+
+var rawId=new URLSearchParams(window.location.search).get("id")||(window.location.hash&&window.location.hash.replace("#",""))||"1";var id=parseInt(rawId);if(isNaN(id))id=1;
+var post=POSTS.find(function(p){return p.id===id});
+var page=document.getElementById("page");
+
+if(!post){
+  page.innerHTML='<div class="not-found"><h1>Post Not Found</h1><p>This post may have been removed or the link may be incorrect.</p><a href="blog.html" class="back-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg> Back to all posts</a></div>';
+  document.title="Post Not Found — GYST Counselling Inc.";
+} else {
+  document.title=post.title+" — GYST Counselling Inc.";
+  var grad=GRADS[(post.id-1)%GRADS.length];
+
+  var tagsHTML=post.tags.map(function(t){return '<a href="blog.html" class="ptag">'+t+'</a>'}).join("");
+
+  var tocHTML="";
+  post.toc.forEach(function(t){tocHTML+='<a href="#'+t.toLowerCase().replace(/[^a-z0-9]+/g,"-")+'">'+t+'</a>'});
+
+  // Related posts (different id, max 3)
+  var related=POSTS.filter(function(p){return p.id!==post.id}).slice(0,3);
+  var relHTML="";
+  related.forEach(function(r){
+    var rg=GRADS[(r.id-1)%GRADS.length];
+    relHTML+='<a href="blog-detail.html?id='+r.id+'" class="related-post"><div class="rp-thumb" style="background:'+rg+'"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg></div><div class="rp-info"><h5>'+r.title+'</h5><span>'+r.date+' &middot; '+r.read+'</span></div></a>';
+  });
+
+  // Prev/Next
+  var prevPost=POSTS.find(function(p){return p.id===post.id-1});
+  var nextPost=POSTS.find(function(p){return p.id===post.id+1});
+
+  page.innerHTML=
+  '<section class="post-hero"><div class="post-hero-inner">'+
+    '<div class="bc"><a href="gyst-v2.html">Home</a> <span>&rsaquo;</span> <a href="blog.html">Blog</a> <span>&rsaquo;</span> <span>'+post.title+'</span></div>'+
+    '<div class="post-banner" style="background:'+grad+'"><div class="post-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg></div></div>'+
+  '</div></section>'+
+  '<div class="post-layout"><article>'+
+    '<div class="article-meta"><span class="cat '+post.cc+'">'+post.cat+'</span><span class="meta-text">'+post.date+' &middot; '+post.read+'</span></div>'+
+    '<h1 class="article-title">'+post.title+'</h1>'+
+    '<div class="article-author-bar"><div class="aa-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div><div><div class="aa-name">Valerie M. Sipos</div><div class="aa-role">M.C., CCC — Founder, GYST Counselling</div></div></div>'+
+    '<div class="prose">'+post.body+'</div>'+
+    '<div class="post-tags">'+tagsHTML+'</div>'+
+  '</article>'+
+  '<aside class="post-sidebar">'+
+    '<div class="sidebar-card toc"><h4>In This Article</h4>'+tocHTML+'</div>'+
+    '<div class="sidebar-card author-bio"><div class="bio-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg></div><div class="bio-name">Valerie M. Sipos</div><div class="bio-cred">M.C., CCC</div><p class="bio-text">Counsellor, life coach, and grandmother. Guided by Indigenous teachings and committed to creating safe, inclusive spaces for growth and healing.</p></div>'+
+    '<div class="sidebar-card"><h4>Related Posts</h4>'+relHTML+'</div>'+
+    '<div class="cta-card"><h4>Ready to talk?</h4><p>Your first session is free. Book a time that works for you.</p><a href="gyst-v2.html#contact" class="btn-sm">Book Free Session</a></div>'+
+  '</aside></div>'+
+  '<div class="post-nav">'+
+    (prevPost?'<a href="blog-detail.html?id='+prevPost.id+'" class="pn-link prev"><div class="pn-label">&larr; Previous</div><div class="pn-title">'+prevPost.title+'</div></a>':'<div></div>')+
+    (nextPost?'<a href="blog-detail.html?id='+nextPost.id+'" class="pn-link next"><div class="pn-label">Next &rarr;</div><div class="pn-title">'+nextPost.title+'</div></a>':'<div></div>')+
+  '</div>';
+}
+</script>
+</body>
+</html>

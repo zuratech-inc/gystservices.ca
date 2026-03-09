@@ -1,0 +1,123 @@
+/* =====================================================
+   page-hero.css — Interior page hero with breadcrumb
+   Extracted from prototype/blog.html and events.html.
+   Used on listing pages (Blog, Events) and content pages.
+   ===================================================== */
+
+/* ── Page hero section ── */
+.page-hero {
+  padding: 8rem 2.5rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative blurred orb behind content */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  opacity: 0.35;
+  filter: blur(60px);
+}
+
+/* Blog hero: terracotta + lavender gradient */
+.page-hero--blog {
+  background: linear-gradient(
+    170deg,
+    var(--terracotta-50) 0%,
+    var(--white) 50%,
+    var(--lavender-50) 100%
+  );
+}
+
+.page-hero--blog::before {
+  background: radial-gradient(circle, var(--terracotta-100), transparent 70%);
+  bottom: -30%;
+  left: -10%;
+}
+
+/* Events hero: sage + sky gradient */
+.page-hero--events {
+  background: linear-gradient(
+    170deg,
+    var(--sage-50) 0%,
+    var(--white) 50%,
+    var(--sky-50) 100%
+  );
+}
+
+.page-hero--events::before {
+  background: radial-gradient(circle, var(--sage-100), transparent 70%);
+  top: -30%;
+  right: -10%;
+}
+
+/* Default interior page hero: neutral pearl */
+.page-hero--default {
+  background: linear-gradient(170deg, var(--pearl) 0%, var(--white) 100%);
+}
+
+.page-hero--default::before {
+  display: none;
+}
+
+/* ── Hero inner wrapper ── */
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: var(--bark);
+  line-height: 1.15;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.page-hero p {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Breadcrumb navigation ── */
+.breadcrumb {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  color: var(--sage-500);
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--sage-600);
+}
+
+.breadcrumb [aria-current='page'] {
+  color: var(--text-mid);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .page-hero {
+    padding: 7rem 1.25rem 2.5rem;
+  }
+}

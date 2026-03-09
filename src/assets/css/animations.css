@@ -1,0 +1,72 @@
+/* =====================================================
+   animations.css — Keyframes and scroll reveal classes
+
+   IMPORTANT: The .reveal class does NOT hide content
+   by default. Only when JS is available (.js class on
+   <html>) does it become invisible initially. This
+   ensures progressive enhancement — content is always
+   readable without JavaScript.
+
+   prefers-reduced-motion: All animations are disabled
+   for users who prefer reduced motion (accessibility).
+   ===================================================== */
+
+/* ── Keyframes ── */
+
+/* Used for hero elements and initial page load animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Used for decorative background orbs in the hero section */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%       { transform: translate(30px, -25px) scale(1.05); }
+  50%       { transform: translate(-20px, 20px) scale(0.95); }
+  75%       { transform: translate(15px, 10px) scale(1.02); }
+}
+
+/* ── Scroll reveal ── */
+
+/* Base: no visual change — content visible without JS */
+.reveal {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Only hide when JS has loaded (nav.js adds .js to <html>) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* IntersectionObserver (reveal.js) adds .visible class */
+.js .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Disable all animations for users who prefer reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure reveal elements are immediately visible */
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

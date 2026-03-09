@@ -1,0 +1,25 @@
+{
+  "name": "gystservices.ca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuratech-inc/gystservices.ca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/zuratech-inc/gystservices.ca/issues"
+  },
+  "homepage": "https://github.com/zuratech-inc/gystservices.ca#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2"
+  }
+}

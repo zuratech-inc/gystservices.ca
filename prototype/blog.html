@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — GYST Counselling Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF; --snow: #FAFBFC; --pearl: #F5F3F0; --linen: #F0ECE6; --sand: #E8E2D8;
+    --sage-50: #F2F5F0; --sage-100: #E1E8DC; --sage-200: #C3D1B8; --sage-400: #8BA876;
+    --sage-500: #6B8F56; --sage-600: #557243;
+    --terracotta-50: #FDF5F0; --terracotta-100: #F9E5D8; --terracotta-200: #EDCBB3;
+    --terracotta-400: #D4956A; --terracotta-500: #C07A4C;
+    --sky-50: #F0F7FB; --sky-100: #DCE9F2; --sky-200: #B3D1E3; --sky-400: #6BA4C5;
+    --lavender-50: #F5F2F8; --lavender-100: #E6DFF0; --lavender-200: #CFBFE3;
+    --ochre-50: #FBF7EF; --ochre-100: #F3EBD6; --ochre-400: #D4A843;
+    --bark: #2E2923; --bark-light: #4A4239;
+    --text: #3B3630; --text-mid: #6B645B; --text-light: #918981;
+    --border: #E5E1DB;
+    --shadow-sm: 0 1px 3px rgba(46,41,35,0.04);
+    --shadow-md: 0 4px 20px rgba(46,41,35,0.06);
+    --shadow-lg: 0 12px 40px rgba(46,41,35,0.08);
+    --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px; --radius-full: 100px;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; font-weight: 300; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(1.5);
+    box-shadow: 0 1px 0 var(--border);
+  }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 500; color: var(--bark); letter-spacing: -0.03em; }
+  .nav-logo span { color: var(--sage-500); font-weight: 300; }
+  .nav-links {
+    display: flex; gap: 0.4rem; list-style: none; align-items: center;
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+    padding: 0.35rem; border-radius: var(--radius-full); border: 1px solid rgba(0,0,0,0.04);
+  }
+  .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--text-mid); padding: 0.5rem 1.15rem; border-radius: var(--radius-full); transition: all 0.25s ease; }
+  .nav-links a:hover { color: var(--text); background: var(--pearl); }
+  .nav-links .nav-cta { background: var(--sage-500); color: white; font-weight: 500; padding: 0.5rem 1.4rem; }
+  .nav-links .nav-cta:hover { background: var(--sage-600); color: white; }
+  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 24px; position: relative; z-index: 10; }
+  .mobile-toggle span { display: block; width: 100%; height: 2px; background: var(--bark); position: absolute; border-radius: 2px; transition: all 0.3s ease; }
+  .mobile-toggle span:nth-child(1) { top: 0; }
+  .mobile-toggle span:nth-child(2) { top: 11px; }
+  .mobile-toggle span:nth-child(3) { top: 22px; }
+  .mobile-toggle.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+  .mobile-toggle.open span:nth-child(2) { opacity: 0; }
+  .mobile-toggle.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+  /* PAGE HEADER */
+  .page-hero {
+    padding: 8rem 2.5rem 3.5rem;
+    background: linear-gradient(170deg, var(--terracotta-50) 0%, var(--white) 50%, var(--lavender-50) 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; bottom: -30%; left: -10%;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, var(--terracotta-100), transparent 70%);
+    opacity: 0.35; filter: blur(60px);
+  }
+  .page-hero-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-light); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+  .breadcrumb a { color: var(--sage-500); transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--sage-600); }
+  .page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); color: var(--bark); line-height: 1.15; font-weight: 400; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .page-hero p { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 500px; margin: 0 auto; }
+
+  /* FILTERS */
+  .filters-bar {
+    padding: 1.5rem 2.5rem; background: var(--white);
+    border-bottom: 1px solid var(--border); position: sticky; top: 60px; z-index: 50;
+  }
+  .filters-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .filter-label { font-size: 0.78rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 0.25rem; }
+  .filter-btn {
+    padding: 0.45rem 1.1rem; border-radius: var(--radius-full);
+    font-size: 0.82rem; font-weight: 400; border: 1.5px solid var(--border);
+    background: var(--white); color: var(--text-mid); cursor: pointer;
+    transition: all 0.25s ease; font-family: 'Outfit', sans-serif;
+  }
+  .filter-btn:hover { border-color: var(--sage-200); color: var(--text); }
+  .filter-btn.active { background: var(--sage-500); color: white; border-color: var(--sage-500); }
+
+  /* BLOG SECTION */
+  .blog-section { padding: 3rem 2.5rem 4rem; background: var(--pearl); min-height: 60vh; }
+  .blog-inner { max-width: 1140px; margin: 0 auto; }
+
+  /* FEATURED POST (first load only) */
+  .featured-post {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    background: var(--white); border-radius: var(--radius-xl);
+    overflow: hidden; border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 2.5rem;
+    transition: all 0.4s ease;
+    opacity: 0; transform: translateY(20px);
+    animation: cardIn 0.6s ease forwards;
+  }
+  .featured-post:hover { box-shadow: var(--shadow-lg); }
+
+  .featured-img {
+    min-height: 340px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .featured-img .fi { width: 72px; height: 72px; background: rgba(255,255,255,0.55); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .featured-img .fi svg { width: 32px; height: 32px; color: var(--bark-light); }
+  .featured-label {
+    position: absolute; top: 1.25rem; left: 1.25rem;
+    background: var(--white); padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-full); font-size: 0.7rem;
+    font-weight: 600; color: var(--sage-600); letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .featured-body {
+    padding: 3rem; display: flex; flex-direction: column; justify-content: center;
+  }
+  .featured-body .blog-meta { margin-bottom: 0.75rem; }
+  .featured-body h2 {
+    font-family: 'Fraunces', serif; font-size: 1.6rem; color: var(--bark);
+    margin-bottom: 0.75rem; font-weight: 500; line-height: 1.3;
+  }
+  .featured-body > p {
+    font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem;
+  }
+
+  /* BLOG GRID */
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .blog-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    overflow: hidden; border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column;
+    opacity: 0; transform: translateY(20px);
+    animation: cardIn 0.5s ease forwards;
+  }
+  .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+  @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+  .blog-card-img {
+    height: 180px; position: relative;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .blog-card-img .ci {
+    width: 48px; height: 48px; background: rgba(255,255,255,0.5);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .blog-card-img .ci svg { width: 22px; height: 22px; color: var(--bark-light); }
+
+  .blog-card-body {
+    padding: 1.5rem 1.75rem 1.75rem; flex: 1;
+    display: flex; flex-direction: column;
+  }
+
+  .blog-meta { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .blog-category {
+    display: inline-block; padding: 0.2rem 0.65rem; border-radius: var(--radius-full);
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .cat-wellness { background: var(--sage-50); color: var(--sage-600); }
+  .cat-culture { background: var(--terracotta-50); color: var(--terracotta-500); }
+  .cat-growth { background: var(--sky-50); color: var(--sky-400); }
+  .cat-family { background: var(--lavender-50); color: #7B62A8; }
+  .cat-community { background: var(--ochre-50); color: var(--ochre-400); }
+
+  .blog-date { font-size: 0.75rem; color: var(--text-light); }
+  .blog-card-body h3 {
+    font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--bark);
+    margin-bottom: 0.5rem; font-weight: 500; line-height: 1.35;
+  }
+  .blog-card-body > p {
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.7;
+    margin-bottom: 1.25rem; flex: 1;
+  }
+
+  .blog-card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+
+  .blog-author { display: flex; align-items: center; gap: 0.5rem; }
+  .blog-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-avatar svg { width: 14px; height: 14px; }
+  .blog-aname { font-size: 0.78rem; font-weight: 500; color: var(--bark); }
+  .blog-arole { font-size: 0.68rem; color: var(--text-light); }
+
+  .blog-read-link {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.82rem; font-weight: 500; color: var(--sage-500);
+    transition: gap 0.3s ease;
+  }
+  .blog-read-link:hover { gap: 0.5rem; }
+  .blog-read-link svg { width: 14px; height: 14px; }
+
+  /* Tags inside post */
+  .post-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.75rem; }
+  .post-tag {
+    font-size: 0.68rem; color: var(--text-light);
+    background: var(--pearl); padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+  }
+
+  /* LOADING */
+  .load-sentinel { padding: 3rem; text-align: center; }
+  .spinner {
+    width: 32px; height: 32px; border: 3px solid var(--border);
+    border-top-color: var(--sage-400); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 0 auto 0.75rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .load-text { font-size: 0.85rem; color: var(--text-light); }
+  .end-text { font-size: 0.88rem; color: var(--text-light); padding: 3rem; text-align: center; }
+
+  /* FOOTER */
+  footer { background: var(--bark); padding: 3rem 2.5rem 2rem; color: rgba(255,255,255,0.4); }
+  .footer-inner { max-width: 1140px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand .fl { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--sand); margin-bottom: 0.35rem; }
+  .footer-brand p { font-size: 0.85rem; }
+  .footer-nav { display: flex; gap: 2rem; }
+  .footer-nav a { font-size: 0.85rem; color: rgba(255,255,255,0.45); transition: color 0.25s ease; }
+  .footer-nav a:hover { color: rgba(255,255,255,0.8); }
+  .footer-copy { margin-top: 1.5rem; font-size: 0.78rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); padding: 1rem 1.5rem 1.5rem; box-shadow: var(--shadow-lg); gap: 0.25rem; border: none; }
+    .nav-links.open a { padding: 0.75rem 1rem; font-size: 0.9rem; }
+    .featured-post { grid-template-columns: 1fr; }
+    .featured-img { min-height: 220px; }
+    .blog-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 7rem 1.5rem 2.5rem; }
+    .filters-bar { padding: 1rem 1.5rem; }
+    .blog-section { padding: 2rem 1.5rem 3rem; }
+    .footer-top { flex-direction: column; }
+    .footer-nav { flex-direction: column; gap: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="gyst-v2.html" class="nav-logo">GYST <span>Counselling</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="gyst-v2.html#about">About</a></li>
+    <li><a href="gyst-v2.html#philosophy">Philosophy</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html" style="color:var(--text);font-weight:500;">Blog</a></li>
+    <li><a href="gyst-v2.html#testimonials">Voices</a></li>
+    <li><a href="gyst-v2.html#contact" class="nav-cta">Book Free Session</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="gyst-v2.html">Home</a> <span>›</span> <span>Blog</span></div>
+    <h1>Insights &amp; Reflections</h1>
+    <p>Thoughts on wellness, cultural identity, growth, and the journey of becoming.</p>
+  </div>
+</section>
+
+<div class="filters-bar">
+  <div class="filters-inner">
+    <span class="filter-label">Topics:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="culture">Culture &amp; Healing</button>
+    <button class="filter-btn" data-filter="growth">Personal Growth</button>
+    <button class="filter-btn" data-filter="family">Family Systems</button>
+    <button class="filter-btn" data-filter="wellness">Wellness</button>
+    <button class="filter-btn" data-filter="community">Community</button>
+  </div>
+</div>
+
+<section class="blog-section">
+  <div class="blog-inner">
+    <div id="featuredArea"></div>
+    <div class="blog-grid" id="blogGrid"></div>
+    <div class="load-sentinel" id="loadSentinel">
+      <div class="spinner"></div>
+      <div class="load-text">Loading more posts…</div>
+    </div>
+    <div class="end-text" id="endText" style="display:none;">You've reached the end. More posts coming soon!</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fl">GYST Counselling Inc.</div>
+        <p>Valerie M. Sipos, M.C., CCC — Calgary, Alberta</p>
+      </div>
+      <div class="footer-nav">
+        <a href="gyst-v2.html#about">About</a>
+        <a href="gyst-v2.html#philosophy">Philosophy</a>
+        <a href="events.html">Events</a>
+        <a href="blog.html">Blog</a>
+        <a href="gyst-v2.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; 2026 GYST Counselling Inc. All rights reserved.</span>
+      <span>We respectfully acknowledge the traditional territories of the Blackfoot Confederacy and the people of Treaty 7.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Nav
+const toggle = document.getElementById('mobileToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+
+// ===== BLOG POST DATA =====
+// Best-practice fields: id, category, catClass, title, excerpt, author, authorRole, date, readTime, tags[], featured, image gradient
+const allPosts = [
+  {
+    id: 1, category: 'Culture & Healing', catClass: 'cat-culture', featured: true,
+    title: 'Returning to Core Values: How Indigenous Teachings Guide Modern Wellness',
+    excerpt: 'In a world that moves fast and asks us to keep up, there is profound wisdom in returning to the simple truths taught by our elders. This post explores how grounding ourselves in the physical, mental, emotional, and spiritual dimensions of wellness can bring clarity to even the most complicated seasons of life.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC — Founder',
+    date: 'February 12, 2026', readTime: '8 min read',
+    tags: ['Indigenous Wellness', 'Holistic Health', 'Cultural Identity'],
+    gradient: 'linear-gradient(140deg, var(--sage-100), var(--sky-100), var(--terracotta-100))',
+    avatarBg: 'var(--sage-100)', avatarColor: 'var(--sage-400)',
+  },
+  {
+    id: 2, category: 'Personal Growth', catClass: 'cat-growth',
+    title: 'Finding Home: Navigating Identity as a Newcomer',
+    excerpt: 'For those settling into a new community, the emotional journey can be as challenging as the practical one. Here\'s how counselling can help you find your footing.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'January 28, 2026', readTime: '5 min read',
+    tags: ['Newcomers', 'Identity', 'Transitions'],
+    gradient: 'linear-gradient(135deg, var(--terracotta-100), var(--ochre-100))',
+    avatarBg: 'var(--terracotta-100)', avatarColor: 'var(--terracotta-400)',
+  },
+  {
+    id: 3, category: 'Family Systems', catClass: 'cat-family',
+    title: 'Breaking Cycles: Understanding Intergenerational Patterns in Your Family',
+    excerpt: 'We carry more from our families than we realize. Understanding these patterns is the first step toward building healthier relationships across generations.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'January 10, 2026', readTime: '6 min read',
+    tags: ['Family Dynamics', 'Intergenerational', 'Healing'],
+    gradient: 'linear-gradient(135deg, var(--lavender-100), var(--sky-100))',
+    avatarBg: 'var(--lavender-100)', avatarColor: '#7B62A8',
+  },
+  {
+    id: 4, category: 'Wellness', catClass: 'cat-wellness',
+    title: 'The Four Dimensions of Self: A Framework for Daily Balance',
+    excerpt: 'Physical, mental, emotional, and spiritual — attending to each dimension daily creates a resilient foundation that supports us through life\'s inevitable challenges.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'December 20, 2025', readTime: '7 min read',
+    tags: ['Self-Care', 'Balance', 'Daily Practice'],
+    gradient: 'linear-gradient(135deg, var(--sage-100), var(--sage-200))',
+    avatarBg: 'var(--sage-100)', avatarColor: 'var(--sage-400)',
+  },
+  {
+    id: 5, category: 'Community', catClass: 'cat-community',
+    title: 'Why Community Circles Matter More Than Ever',
+    excerpt: 'In an age of digital isolation, gathering in circle to share stories, listen deeply, and witness one another is a radical act of healing.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'December 5, 2025', readTime: '4 min read',
+    tags: ['Community', 'Connection', 'Sharing Circles'],
+    gradient: 'linear-gradient(135deg, var(--ochre-100), var(--terracotta-100))',
+    avatarBg: 'var(--ochre-100)', avatarColor: 'var(--ochre-400)',
+  },
+  {
+    id: 6, category: 'Culture & Healing', catClass: 'cat-culture',
+    title: 'Honouring Multiple Identities: When You Belong to More Than One Culture',
+    excerpt: 'Many of us hold more than one cultural identity. Rather than choosing between them, counselling can help integrate these into a richer, more complete sense of self.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'November 18, 2025', readTime: '6 min read',
+    tags: ['Multicultural', 'Identity', 'Integration'],
+    gradient: 'linear-gradient(135deg, var(--sky-100), var(--lavender-100))',
+    avatarBg: 'var(--sky-100)', avatarColor: 'var(--sky-400)',
+  },
+  {
+    id: 7, category: 'Personal Growth', catClass: 'cat-growth',
+    title: 'The Courage to Change: What "Becoming" Really Means',
+    excerpt: 'Change is both exciting and scary. Understanding what holds us back — and what propels us forward — is at the heart of every counselling journey.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'November 2, 2025', readTime: '5 min read',
+    tags: ['Change', 'Courage', 'Self-Discovery'],
+    gradient: 'linear-gradient(135deg, var(--terracotta-100), var(--sage-100))',
+    avatarBg: 'var(--terracotta-100)', avatarColor: 'var(--terracotta-400)',
+  },
+  {
+    id: 8, category: 'Family Systems', catClass: 'cat-family',
+    title: 'Parenting Through a Cultural Lens',
+    excerpt: 'How different cultural backgrounds shape our parenting — and why understanding these influences helps us raise children with intention and compassion.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'October 15, 2025', readTime: '7 min read',
+    tags: ['Parenting', 'Culture', 'Children'],
+    gradient: 'linear-gradient(135deg, var(--lavender-100), var(--terracotta-100))',
+    avatarBg: 'var(--lavender-100)', avatarColor: '#7B62A8',
+  },
+  {
+    id: 9, category: 'Wellness', catClass: 'cat-wellness',
+    title: 'Simple Truths: Returning to What Matters When Life Gets Complicated',
+    excerpt: 'When complexity overwhelms, the path back to clarity often lies in the simplest teachings. Strategies for simplifying when everything feels like too much.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'October 1, 2025', readTime: '5 min read',
+    tags: ['Simplicity', 'Clarity', 'Overwhelm'],
+    gradient: 'linear-gradient(135deg, var(--sage-100), var(--ochre-100))',
+    avatarBg: 'var(--sage-100)', avatarColor: 'var(--sage-400)',
+  },
+  {
+    id: 10, category: 'Community', catClass: 'cat-community',
+    title: 'Building Bridges: How Shared Vulnerability Creates Connection',
+    excerpt: 'The moments when we let others see our struggles are often the moments that build the deepest bonds. On the power of honest sharing in community.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'September 14, 2025', readTime: '4 min read',
+    tags: ['Vulnerability', 'Connection', 'Trust'],
+    gradient: 'linear-gradient(135deg, var(--ochre-100), var(--sky-100))',
+    avatarBg: 'var(--ochre-100)', avatarColor: 'var(--ochre-400)',
+  },
+  {
+    id: 11, category: 'Culture & Healing', catClass: 'cat-culture',
+    title: 'Walking in Two Worlds: Indigenous Perspectives on Modern Mental Health',
+    excerpt: 'How traditional Indigenous approaches to wellness complement and enrich contemporary counselling practice — and why both matter.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'September 1, 2025', readTime: '8 min read',
+    tags: ['Indigenous', 'Mental Health', 'Integration'],
+    gradient: 'linear-gradient(135deg, var(--sage-200), var(--sage-100))',
+    avatarBg: 'var(--sage-100)', avatarColor: 'var(--sage-400)',
+  },
+  {
+    id: 12, category: 'Personal Growth', catClass: 'cat-growth',
+    title: 'Solutions Over Problems: A Practical Guide to SFBT Thinking',
+    excerpt: 'What if we spent less time analyzing what\'s wrong and more time building what\'s right? An introduction to Solutions-Focused thinking for everyday life.',
+    author: 'Valerie M. Sipos', authorRole: 'M.C., CCC',
+    date: 'August 18, 2025', readTime: '6 min read',
+    tags: ['SFBT', 'Practical', 'Mindset'],
+    gradient: 'linear-gradient(135deg, var(--sky-100), var(--sage-100))',
+    avatarBg: 'var(--sky-100)', avatarColor: 'var(--sky-400)',
+  },
+];
+
+const categoryMap = { 'Culture & Healing': 'culture', 'Personal Growth': 'growth', 'Family Systems': 'family', 'Wellness': 'wellness', 'Community': 'community' };
+
+// ===== RENDERING =====
+const BATCH = 6;
+let idx = 0, activeFilter = 'all', filtered = [], loading = false, done = false;
+let featuredShown = false;
+
+const featArea = document.getElementById('featuredArea');
+const grid = document.getElementById('blogGrid');
+const sentinel = document.getElementById('loadSentinel');
+const endText = document.getElementById('endText');
+
+function arrowSvg() {
+  return '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>';
+}
+function personSvg() {
+  return '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>';
+}
+function bookSvg() {
+  return '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>';
+}
+
+function renderFeatured(post) {
+  return `
+  <article class="featured-post">
+    <div class="featured-img" style="background:${post.gradient}">
+      <span class="featured-label">✦ Featured</span>
+      <div class="fi">${bookSvg()}</div>
+    </div>
+    <div class="featured-body">
+      <div class="blog-meta">
+        <span class="blog-category ${post.catClass}">${post.category}</span>
+        <span class="blog-date">${post.date} · ${post.readTime}</span>
+      </div>
+      <h2>${post.title}</h2>
+      <p>${post.excerpt}</p>
+      <a href="#" class="blog-read-link">Read full article ${arrowSvg()}</a>
+      <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+        <div class="blog-avatar" style="background:${post.avatarBg}">${personSvg()}</div>
+        <div><div class="blog-aname">${post.author}</div><div class="blog-arole">${post.authorRole}</div></div>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderCard(post, delay) {
+  const tagsHTML = post.tags.map(t => `<span class="post-tag">${t}</span>`).join('');
+  return `
+  <article class="blog-card" style="animation-delay:${delay}s">
+    <div class="blog-card-img" style="background:${post.gradient}">
+      <div class="ci">${bookSvg()}</div>
+    </div>
+    <div class="blog-card-body">
+      <div class="blog-meta">
+        <span class="blog-category ${post.catClass}">${post.category}</span>
+        <span class="blog-date">${post.date} · ${post.readTime}</span>
+      </div>
+      <h3>${post.title}</h3>
+      <p>${post.excerpt}</p>
+      <div class="post-tags">${tagsHTML}</div>
+      <div class="blog-card-footer">
+        <div class="blog-author">
+          <div class="blog-avatar" style="background:${post.avatarBg}">${personSvg()}</div>
+          <div><div class="blog-aname">${post.author}</div><div class="blog-arole">${post.authorRole}</div></div>
+        </div>
+        <a href="#" class="blog-read-link">Read ${arrowSvg()}</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+function loadBatch() {
+  if (loading || done) return;
+  loading = true;
+
+  // Show featured on first load (if filter=all and featured exists)
+  if (!featuredShown && activeFilter === 'all' && filtered.length > 0 && filtered[0].featured) {
+    featArea.innerHTML = renderFeatured(filtered[0]);
+    idx = 1;
+    featuredShown = true;
+  }
+
+  const batch = filtered.slice(idx, idx + BATCH);
+  if (batch.length === 0) {
+    done = true; sentinel.style.display = 'none'; endText.style.display = 'block';
+    loading = false; return;
+  }
+
+  setTimeout(() => {
+    batch.forEach((p, i) => {
+      grid.insertAdjacentHTML('beforeend', renderCard(p, (i % BATCH) * 0.07));
+    });
+    idx += batch.length;
+    if (idx >= filtered.length) {
+      done = true; sentinel.style.display = 'none'; endText.style.display = 'block';
+    }
+    loading = false;
+  }, 350);
+}
+
+// Intersection Observer
+const io = new IntersectionObserver(e => { if (e[0].isIntersecting) loadBatch(); }, { rootMargin: '200px' });
+io.observe(sentinel);
+
+function resetAndLoad(filter) {
+  activeFilter = filter;
+  filtered = filter === 'all' ? [...allPosts] : allPosts.filter(p => categoryMap[p.category] === filter);
+  idx = 0; done = false; featuredShown = false;
+  featArea.innerHTML = ''; grid.innerHTML = '';
+  sentinel.style.display = ''; endText.style.display = 'none';
+  loadBatch();
+}
+
+// Initial
+resetAndLoad('all');
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    resetAndLoad(this.dataset.filter);
+  });
+});
+</script>
+</body>
+</html>

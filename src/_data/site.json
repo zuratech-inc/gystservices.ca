@@ -1,0 +1,17 @@
+{
+  "name": "GYST Counselling Inc.",
+  "url": "https://gystservices.ca",
+  "description": "Culturally grounded counselling services",
+  "practitioner": {
+    "name": "Valerie M. Sipos",
+    "credentials": "M.C., CCC",
+    "role": "Registered Clinical Counsellor"
+  },
+  "contact": {
+    "phone": "368-996-6230",
+    "email": "info@gystservices.ca",
+    "hours": "Mon–Thu 12 PM – 8 PM",
+    "location": "Online counselling across Alberta & British Columbia"
+  },
+  "acknowledgement": "We respectfully acknowledge the traditional territories of the Blackfoot Confederacy and the people of Treaty 7"
+}

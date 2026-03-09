@@ -1,0 +1,88 @@
+/* =====================================================
+   tokens.css — CSS Custom Properties (Design Tokens)
+   All values extracted from prototype/home.html.
+   These tokens are the single source of truth for
+   colour, typography, spacing, and layout across the
+   entire site. Child files reference only these vars.
+   ===================================================== */
+
+:root {
+  /* ── Neutral backgrounds ── */
+  --white: #FFFFFF;
+  --snow: #FAFBFC;
+  --pearl: #F5F3F0;
+  --linen: #F0ECE6;
+  --sand: #E8E2D8;
+
+  /* ── Sage (primary green) ── */
+  --sage-50: #F2F5F0;
+  --sage-100: #E1E8DC;
+  --sage-200: #C3D1B8;
+  --sage-400: #8BA876;
+  --sage-500: #6B8F56;
+  --sage-600: #557243;
+
+  /* ── Terracotta (warm accent) ── */
+  --terracotta-50: #FDF5F0;
+  --terracotta-100: #F9E5D8;
+  --terracotta-200: #EDCBB3;
+  --terracotta-400: #D4956A;
+  --terracotta-500: #C07A4C;
+
+  /* ── Sky (cool accent) ── */
+  --sky-50: #F0F7FB;
+  --sky-100: #DCE9F2;
+  --sky-200: #B3D1E3;
+  --sky-400: #6BA4C5;
+
+  /* ── Lavender (soft purple accent) ── */
+  --lavender-50: #F5F2F8;
+  --lavender-100: #E6DFF0;
+  --lavender-200: #CFBFE3;
+
+  /* ── Ochre (warm yellow accent) ── */
+  --ochre-50: #FBF7EF;
+  --ochre-100: #F3EBD6;
+  --ochre-400: #D4A843;
+
+  /* ── Bark (dark neutrals) ── */
+  --bark: #2E2923;
+  --bark-light: #4A4239;
+
+  /* ── Text colours ── */
+  --text: #3B3630;
+  --text-mid: #6B645B;
+  --text-light: #918981;
+
+  /* ── Border ── */
+  --border: #E5E1DB;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(46, 41, 35, 0.04);
+  --shadow-md: 0 4px 20px rgba(46, 41, 35, 0.06);
+  --shadow-lg: 0 12px 40px rgba(46, 41, 35, 0.08);
+  --shadow-xl: 0 20px 60px rgba(46, 41, 35, 0.1);
+
+  /* ── Border radii ── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 100px;
+
+  /* ── Typography ── */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Spacing scale ── */
+  --space-xs: 0.25rem;   /*  4px */
+  --space-sm: 0.5rem;    /*  8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2.5rem;    /* 40px */
+  --space-2xl: 4rem;     /* 64px */
+
+  /* ── Layout ── */
+  --max-width: 1140px;
+  --nav-height: 60px;
+}

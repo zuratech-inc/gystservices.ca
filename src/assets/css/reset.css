@@ -1,0 +1,74 @@
+/* =====================================================
+   reset.css — Modern CSS Reset
+   Opinionated normalisation for a consistent baseline.
+   Preserves useful browser defaults (e.g. list styles
+   in prose, form element font inheritance).
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent font scaling in landscape on iOS */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove default anchor decoration; colour set per-context */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove list style only when list is used as navigation
+   (prose lists keep their bullets via .prose rules) */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Focus-visible ring for keyboard users; matches brand palette */
+:focus-visible {
+  outline: 2px solid var(--sage-500);
+  outline-offset: 3px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {# ── Title ── #}
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.name }}</title>
+
+  {# ── SEO meta ── #}
+  <meta name="description" content="{{ description | default(site.description) }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  {# ── Open Graph ── #}
+  <meta property="og:title" content="{{ title | default(site.name) }}">
+  <meta property="og:description" content="{{ description | default(site.description) }}">
+  <meta property="og:type" content="{{ ogType | default('website') }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+
+  {# ── Font preload: critical path — Outfit and Fraunces latin subsets ── #}
+  <link
+    rel="preload"
+    href="/assets/fonts/outfit/outfit-latin.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  >
+  <link
+    rel="preload"
+    href="/assets/fonts/fraunces/fraunces-normal-latin.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  >
+
+  {# ── Stylesheet ── #}
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  {# ── Page-specific head content ── #}
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  {# ── Site header / navigation ── #}
+  {% include "partials/header.njk" %}
+
+  {# ── Main content area ── #}
+  <main id="main-content">
+    {% block body_content %}
+      {{ content | safe }}
+    {% endblock %}
+  </main>
+
+  {# ── Site footer ── #}
+  {% include "partials/footer.njk" %}
+
+  {# ── Core scripts loaded deferred (non-blocking) ── #}
+  <script src="/assets/js/nav.js" defer></script>
+  <script src="/assets/js/reveal.js" defer></script>
+
+  {# ── Page-specific scripts ── #}
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

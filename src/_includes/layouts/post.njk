@@ -1,0 +1,130 @@
+{#
+  layouts/post.njk — Blog post detail layout
+  Extends base.njk via Nunjucks inheritance.
+  Wraps content in a semantic article with breadcrumb,
+  gradient banner, meta bar, author bar, prose body,
+  and a sidebar with author bio, related posts, and CTA.
+#}
+{% set navSolid = true %}
+{% set ogType = "article" %}
+{% extends "layouts/base.njk" %}
+
+{% block body_content %}
+
+  {# ── Post hero with breadcrumb and gradient banner ── #}
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{{ title }}</span>
+      </nav>
+      <div class="post-banner" aria-hidden="true">
+        <div class="post-banner-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── Two-column layout: article + sidebar ── #}
+  <div class="post-layout">
+    <article>
+      {# Category + date meta #}
+      <div class="article-meta">
+        {% if category %}
+          <span class="blog-category cat-{{ category | lower | replace(' ', '-') | replace('&', '') | replace('  ', '-') }}">{{ category }}</span>
+        {% endif %}
+        <span class="meta-text">
+          <time datetime="{{ date | date('yyyy-MM-dd') }}">{{ date | date('LLLL d, yyyy') }}</time>
+          {% if readTime %} &middot; {{ readTime }}{% endif %}
+        </span>
+      </div>
+
+      {# Article title #}
+      <h1 class="article-title">{{ title }}</h1>
+
+      {# Author bar #}
+      <div class="article-author-bar">
+        <div class="aa-avatar" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
+          </svg>
+        </div>
+        <div>
+          <div class="aa-name">{{ site.practitioner.name }}</div>
+          <div class="aa-role">{{ site.practitioner.credentials }} — Founder, {{ site.name }}</div>
+        </div>
+      </div>
+
+      {# Prose content from Markdown #}
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+
+      {# Tags #}
+      {% if tags %}
+        <div class="post-tags-list">
+          {% for tag in tags %}
+            {% if tag != 'post' %}
+              <span class="post-tag">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+
+    {# Sidebar #}
+    <aside class="post-sidebar">
+      {# Author bio #}
+      <div class="sidebar-card author-bio">
+        <div class="bio-avatar" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
+          </svg>
+        </div>
+        <div class="bio-name">{{ site.practitioner.name }}</div>
+        <div class="bio-cred">{{ site.practitioner.credentials }}</div>
+        <p class="bio-text">Counsellor, life coach, and grandmother. Guided by Indigenous teachings and committed to creating safe, inclusive spaces for growth and healing.</p>
+      </div>
+
+      {# CTA card #}
+      <div class="cta-card">
+        <h4>Ready to talk?</h4>
+        <p>Your first session is free. Book a time that works for you.</p>
+        <a href="/#contact" class="btn-sm">Book Free Session</a>
+      </div>
+    </aside>
+  </div>
+
+  {# ── Post navigation (prev / next) ── #}
+  {% if collections.post %}
+    {% set allPosts = collections.post | reverse %}
+    {% set currentIdx = allPosts | selectattr('url', 'equalto', page.url) | list %}
+    {# Nunjucks does not support complex index lookups natively;
+       output nav only if prev/next are explicitly set in frontmatter #}
+    {% if prevPost or nextPost %}
+      <nav class="post-nav" aria-label="Post navigation">
+        {% if prevPost %}
+          <a href="{{ prevPost.url }}" class="pn-link prev">
+            <div class="pn-label">&#8592; Previous</div>
+            <div class="pn-title">{{ prevPost.title }}</div>
+          </a>
+        {% else %}
+          <div></div>
+        {% endif %}
+        {% if nextPost %}
+          <a href="{{ nextPost.url }}" class="pn-link next">
+            <div class="pn-label">Next &#8594;</div>
+            <div class="pn-title">{{ nextPost.title }}</div>
+          </a>
+        {% else %}
+          <div></div>
+        {% endif %}
+      </nav>
+    {% endif %}
+  {% endif %}
+
+{% endblock %}

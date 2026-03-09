@@ -1,0 +1,28 @@
+{#
+  partials/footer.njk — Site footer
+  Uses: site (global data), navigation (global data)
+  All contact info is pulled from site.json — never hardcoded.
+#}
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">{{ site.name }}</div>
+        <p>{{ site.practitioner.name }}, {{ site.practitioner.credentials }}</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        {% for item in navigation %}
+          {% if not item.isCta %}
+            <a href="{{ item.url }}">{{ item.label }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="footer-copy">
+      <span>&copy; {{ site.currentYear or '2026' }} {{ site.name }}. All rights reserved.</span>
+      <span>{{ site.acknowledgement }}</span>
+    </div>
+  </div>
+</footer>

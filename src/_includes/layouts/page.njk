@@ -1,0 +1,14 @@
+{#
+  layouts/page.njk — Generic static page layout
+  Extends base.njk via Nunjucks inheritance.
+  The navSolid variable tells the header partial to
+  pre-apply the frosted glass nav style on non-hero pages.
+#}
+{% set navSolid = true %}
+{% extends "layouts/base.njk" %}
+
+{% block body_content %}
+  <div class="page-content">
+    {{ content | safe }}
+  </div>
+{% endblock %}

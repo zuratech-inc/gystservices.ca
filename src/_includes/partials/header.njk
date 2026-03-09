@@ -1,0 +1,42 @@
+{#
+  partials/header.njk — Site navigation header
+  Uses: navigation (global data), site (global data)
+  The .nav--solid modifier pre-applies the frosted glass
+  style on interior pages where the hero is not full-height.
+  nav.js adds/removes .scrolled dynamically on scroll.
+#}
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-header" id="siteHeader">
+  <nav id="nav" class="{{ 'nav--solid' if navSolid else '' }}" aria-label="Main">
+    <a href="/" class="nav-logo" aria-label="{{ site.name }} — home">
+      GYST <span>Counselling</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      {% for item in navigation %}
+        <li>
+          <a
+            href="{{ item.url }}"
+            {% if item.isCta %}class="nav-cta"{% endif %}
+            {% if page.url and not item.isCta and not item.url.startsWith('/#') and page.url | startsWith(item.url) %}aria-current="page"{% endif %}
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <button
+      class="mobile-toggle"
+      id="mobileToggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </nav>
+</header>

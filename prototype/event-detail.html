@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event — GYST Counselling Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:#fff;--pearl:#F5F3F0;--sand:#E8E2D8;
+  --sage-50:#F2F5F0;--sage-100:#E1E8DC;--sage-200:#C3D1B8;--sage-400:#8BA876;--sage-500:#6B8F56;--sage-600:#557243;
+  --terracotta-50:#FDF5F0;--terracotta-100:#F9E5D8;--terracotta-500:#C07A4C;
+  --sky-50:#F0F7FB;--sky-100:#DCE9F2;--sky-400:#6BA4C5;
+  --lavender-50:#F5F2F8;--lavender-100:#E6DFF0;
+  --ochre-50:#FBF7EF;--ochre-100:#F3EBD6;--ochre-400:#D4A843;
+  --bark:#2E2923;--bark-light:#4A4239;
+  --text:#3B3630;--text-mid:#6B645B;--text-light:#918981;
+  --border:#E5E1DB;
+  --shadow-sm:0 1px 3px rgba(46,41,35,.04);--shadow-md:0 4px 20px rgba(46,41,35,.06);--shadow-lg:0 12px 40px rgba(46,41,35,.08);
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:28px;--r-full:100px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit',sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-weight:300}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--bark);letter-spacing:-.03em}
+.nav-logo span{color:var(--sage-500);font-weight:300}
+.nav-links{display:flex;gap:.4rem;list-style:none;align-items:center;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);padding:.35rem;border-radius:var(--r-full);border:1px solid rgba(0,0,0,.04)}
+.nav-links a{font-size:.82rem;font-weight:400;color:var(--text-mid);padding:.5rem 1.15rem;border-radius:var(--r-full);transition:all .25s;letter-spacing:.01em}
+.nav-links a:hover{color:var(--text);background:var(--pearl)}
+.nav-links .cta{background:var(--sage-500);color:#fff;font-weight:500;padding:.5rem 1.4rem}
+.nav-links .cta:hover{background:var(--sage-600);color:#fff}
+.mob{display:none;background:0;border:0;cursor:pointer;width:32px;height:24px;position:relative;z-index:10}
+.mob span{display:block;width:100%;height:2px;background:var(--bark);position:absolute;border-radius:2px;transition:all .3s}
+.mob span:nth-child(1){top:0}.mob span:nth-child(2){top:11px}.mob span:nth-child(3){top:22px}
+.mob.open span:nth-child(1){top:11px;transform:rotate(45deg)}.mob.open span:nth-child(2){opacity:0}.mob.open span:nth-child(3){top:11px;transform:rotate(-45deg)}
+
+/* PAGE TOP */
+.page-top{padding:6.5rem 2.5rem 0;background:var(--white)}
+.page-top-inner{max-width:820px;margin:0 auto}
+.bc{font-size:.82rem;color:var(--text-light);display:flex;align-items:center;gap:.4rem;margin-bottom:1.75rem;flex-wrap:wrap}
+.bc a{color:var(--sage-500);transition:color .2s}.bc a:hover{color:var(--sage-600)}
+.ev-banner{border-radius:var(--r-xl);overflow:hidden;height:160px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:2.5rem}
+.ev-banner-icon{width:52px;height:52px;background:rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ev-banner-icon svg{width:24px;height:24px;color:var(--bark-light)}
+
+/* MAIN CONTENT */
+.ev-wrap{max-width:820px;margin:0 auto;padding:0 2.5rem 5rem}
+
+/* Category */
+.ev-category{display:inline-block;padding:.25rem .75rem;border-radius:var(--r-full);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.tag-workshop{background:var(--sage-50);color:var(--sage-600)}
+.tag-circle{background:var(--terracotta-50);color:var(--terracotta-500)}
+.tag-seminar{background:var(--lavender-50);color:#7B62A8}
+.tag-talk{background:var(--sky-50);color:var(--sky-400)}
+.tag-retreat{background:var(--ochre-50);color:var(--ochre-400)}
+
+/* Title */
+.ev-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--bark);line-height:1.2;font-weight:400;margin-bottom:.5rem;letter-spacing:-.015em}
+
+/* Date */
+.ev-date-line{font-size:.95rem;color:var(--text-mid);margin-bottom:1.5rem}
+
+/* Short description */
+.ev-short-desc{font-size:1.1rem;color:var(--text-mid);line-height:1.85;margin-bottom:2.5rem;max-width:680px}
+
+/* Info cards */
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem}
+.info-card{padding:1.25rem;background:var(--pearl);border-radius:var(--r-md);text-align:center;transition:transform .2s}
+.info-card:hover{transform:translateY(-2px)}
+.info-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto .65rem}
+.info-icon svg{width:20px;height:20px}
+.info-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);font-weight:600;margin-bottom:.2rem}
+.info-value{font-size:.92rem;color:var(--bark);font-weight:400;line-height:1.35}
+
+/* Register bar */
+.register-bar{display:flex;align-items:center;gap:1.5rem;padding:1.75rem 2rem;background:var(--sage-50);border:1.5px solid var(--sage-100);border-radius:var(--r-lg);margin-bottom:3.5rem;flex-wrap:wrap}
+.reg-spots{display:flex;align-items:center;gap:.5rem;font-size:.92rem;color:var(--text-mid);flex:1}
+.reg-dot{width:9px;height:9px;border-radius:50%;background:var(--sage-400);flex-shrink:0}
+.reg-dot.few{background:var(--terracotta-500)}
+.reg-price{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--sage-500);font-weight:500}
+.btn-register{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2.25rem;background:var(--sage-500);color:#fff;font-size:.9rem;font-weight:500;border-radius:var(--r-full);transition:all .3s cubic-bezier(.16,1,.3,1);font-family:inherit;border:0;cursor:pointer}
+.btn-register:hover{background:var(--sage-600);transform:translateY(-2px);box-shadow:0 8px 25px rgba(107,143,86,.25)}
+.btn-register svg{width:16px;height:16px}
+
+/* Divider */
+.section-divider{height:1px;background:var(--border);margin-bottom:2.5rem}
+
+/* Section label */
+.section-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--sage-500);font-weight:600;margin-bottom:1rem}
+.section-label::before{content:'';width:14px;height:1.5px;background:var(--sage-400);border-radius:2px}
+
+/* Long description */
+.ev-long-desc h2{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--bark);margin:2rem 0 .6rem;font-weight:500;line-height:1.3}
+.ev-long-desc h3{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--bark);margin:1.75rem 0 .5rem;font-weight:500}
+.ev-long-desc p{font-size:1.02rem;color:var(--text-mid);line-height:1.9;margin-bottom:1rem}
+.ev-long-desc ul,.ev-long-desc ol{margin:0 0 1.25rem 1.5rem;color:var(--text-mid);font-size:1rem;line-height:1.9}
+.ev-long-desc li{margin-bottom:.35rem}
+.ev-long-desc blockquote{margin:1.5rem 0;padding:1.25rem 1.75rem;background:var(--sage-50);border-left:3px solid var(--sage-400);border-radius:0 var(--r-md) var(--r-md) 0;font-style:italic;color:var(--text-mid);font-size:1.05rem;line-height:1.8}
+.ev-long-desc .callout{padding:1.5rem 2rem;background:var(--pearl);border-radius:var(--r-md);margin:1.5rem 0}
+.ev-long-desc .callout h4{font-family:'Fraunces',serif;font-size:1rem;color:var(--bark);margin-bottom:.35rem;font-weight:500}
+.ev-long-desc .callout p{margin-bottom:0}
+
+/* Back link */
+.back-row{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--sage-500);font-weight:500;font-size:.9rem;transition:gap .3s}
+.back-link:hover{gap:.65rem}
+.back-link svg{width:16px;height:16px}
+
+/* Not found */
+.not-found{text-align:center;padding:10rem 2rem 5rem}
+.not-found h1{font-family:'Fraunces',serif;font-size:2rem;color:var(--bark);margin-bottom:.5rem}
+.not-found p{color:var(--text-mid);margin-bottom:1.5rem}
+
+/* Footer */
+footer{background:var(--bark);padding:3rem 2.5rem 2rem;color:rgba(255,255,255,.4)}
+.ft-inner{max-width:1140px;margin:0 auto}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-brand .ft-logo{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--sand);margin-bottom:.35rem}
+.ft-brand p{font-size:.85rem}
+.ft-nav{display:flex;gap:2rem}
+.ft-nav a{font-size:.85rem;color:rgba(255,255,255,.45);transition:color .25s}
+.ft-nav a:hover{color:rgba(255,255,255,.8)}
+.ft-copy{margin-top:1.5rem;font-size:.78rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* Responsive */
+@media(max-width:960px){
+  .nav-links{display:none}.mob{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:1rem 1.5rem 1.5rem;box-shadow:var(--shadow-lg);gap:.25rem;border:0;border-radius:0}
+  .nav-links.open a{padding:.75rem 1rem;font-size:.9rem}
+  .info-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .page-top{padding:6rem 1.5rem 0}
+  .ev-wrap{padding:0 1.5rem 4rem}
+  .ev-banner{height:120px}
+  .info-grid{grid-template-columns:1fr}
+  .register-bar{flex-direction:column;align-items:stretch;text-align:center}
+  .reg-spots{justify-content:center}
+  .ft-top,.ft-nav{flex-direction:column}.ft-nav{gap:.75rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="gyst-v2.html" class="nav-logo">GYST <span>Counselling</span></a>
+  <ul class="nav-links" id="nl">
+    <li><a href="gyst-v2.html#about">About</a></li>
+    <li><a href="gyst-v2.html#philosophy">Philosophy</a></li>
+    <li><a href="events.html" style="color:var(--text);font-weight:500">Events</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="gyst-v2.html#testimonials">Voices</a></li>
+    <li><a href="gyst-v2.html#contact" class="cta">Book Free Session</a></li>
+  </ul>
+  <button class="mob" id="mt" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="page"></div>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">GYST Counselling Inc.</div>
+        <p>Valerie M. Sipos, M.C., CCC</p>
+      </div>
+      <div class="ft-nav">
+        <a href="gyst-v2.html#about">About</a>
+        <a href="gyst-v2.html#philosophy">Philosophy</a>
+        <a href="events.html">Events</a>
+        <a href="blog.html">Blog</a>
+        <a href="gyst-v2.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="ft-copy">
+      <span>&copy; 2026 GYST Counselling Inc. All rights reserved.</span>
+      <span>We respectfully acknowledge the traditional territories of the Blackfoot Confederacy and the people of Treaty 7.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+var mt = document.getElementById("mt"), nl = document.getElementById("nl");
+mt.onclick = function(){ nl.classList.toggle("open"); mt.classList.toggle("open"); };
+nl.querySelectorAll("a").forEach(function(a){ a.onclick = function(){ nl.classList.remove("open"); mt.classList.remove("open"); }; });
+
+// Gradients for banners
+var GRADS = [
+  "linear-gradient(135deg,#E1E8DC,#DCE9F2)",
+  "linear-gradient(135deg,#F9E5D8,#F3EBD6)",
+  "linear-gradient(135deg,#E6DFF0,#E1E8DC)",
+  "linear-gradient(135deg,#DCE9F2,#E6DFF0)",
+  "linear-gradient(135deg,#F3EBD6,#F9E5D8)",
+  "linear-gradient(135deg,#E1E8DC,#F9E5D8)"
+];
+
+// EVENT DATA
+// Each event has: id, type, tag, tc (tag class), mon, day, date, title, desc, time, loc, spots, price, longDesc (rich HTML)
+var EVENTS = [
+  {
+    id: 1, type: "workshop", tag: "Workshop", tc: "tag-workshop",
+    mon: "Mar", day: "15", date: "Saturday, March 15, 2026",
+    title: "Wellness Through Cultural Connection",
+    desc: "An open workshop exploring how cultural identity strengthens mental wellness. All backgrounds welcome.",
+    time: "2:00 - 4:00 PM", loc: "HOA Community Room", spots: 12, price: "Free",
+    longDesc: '<h2>About This Workshop</h2><p>This interactive workshop invites participants from all cultural backgrounds to explore how cultural identity and traditional practices contribute to mental wellness. Through guided exercises, group discussion, and reflective activities, participants will discover how reconnecting with cultural roots can serve as a powerful foundation for emotional resilience.</p><h3>What to Expect</h3><ul><li>Guided group exercises exploring cultural identity and wellness</li><li>Open discussion in a safe, facilitated environment</li><li>Reflective journaling prompts to take home</li><li>Light refreshments provided</li></ul><h3>Who Is This For?</h3><p>Everyone is welcome regardless of background. Whether you have a strong connection to your cultural heritage or are just beginning to explore it, this workshop meets you where you are.</p><div class="callout"><h4>What to Bring</h4><p>Just yourself and an open mind. A journal is optional but encouraged.</p></div><blockquote>When life gets complicated, as it often does, I have learned to simplify by returning to core values. This workshop helps you discover yours.</blockquote>'
+  },
+  {
+    id: 2, type: "circle", tag: "Community Circle", tc: "tag-circle",
+    mon: "Mar", day: "22", date: "Saturday, March 22, 2026",
+    title: "Newcomers Wellness Circle",
+    desc: "A gentle sharing circle for newcomers navigating the emotional journey of settling into a new community.",
+    time: "6:00 - 7:30 PM", loc: "HOA Community Room", spots: 8, price: "Free",
+    longDesc: '<h2>About This Circle</h2><p>Moving to a new place brings excitement and challenge in equal measure. This gentle, guided sharing circle creates space for newcomers to share their experiences, process the emotional dimensions of transition, and build meaningful connections with others on a similar path.</p><h3>What to Expect</h3><ul><li>A warm welcome and introductions in a judgement-free space</li><li>Guided sharing prompts (no pressure to speak)</li><li>Active listening and mutual support from the group</li><li>Connection with others who understand the journey of transition</li></ul><h3>Who Is This For?</h3><p>Anyone who has recently moved to a new community and is navigating the emotional side of that transition. No prior experience with group work is needed. All cultural backgrounds are warmly welcome.</p><div class="callout"><h4>Circle Guidelines</h4><p>Speak from the heart. Listen without judgment. Take only the time you need. What is shared in circle stays in circle.</p></div>'
+  },
+  {
+    id: 3, type: "seminar", tag: "Seminar", tc: "tag-seminar",
+    mon: "Apr", day: "05", date: "Saturday, April 5, 2026",
+    title: "Understanding Family Systems",
+    desc: "An educational evening exploring how family dynamics shape our wellbeing and how to foster healthier patterns.",
+    time: "7:00 - 9:00 PM", loc: "HOA Community Room", spots: 20, price: "Free",
+    longDesc: '<h2>About This Seminar</h2><p>Drawing from Family Systems Therapy, this educational seminar explores how the families we grow up in shape our beliefs, behaviours, and relationships. Participants will learn about intergenerational patterns, family roles, and practical strategies for building healthier dynamics.</p><h3>Topics Covered</h3><ul><li>How family systems shape individual behaviour across generations</li><li>Understanding intergenerational patterns, rules, and roles</li><li>Recognizing unhealthy dynamics and their cultural nuances</li><li>Practical strategies for creating positive change in your system</li></ul><h3>Format</h3><p>The evening begins with a 45-minute presentation by Valerie, followed by small group discussion and a Q&amp;A session. A take-home resource guide is included for all participants.</p><div class="callout"><h4>No Prior Knowledge Needed</h4><p>This seminar is designed to be accessible to everyone. Whether you have a background in psychology or are encountering these ideas for the first time, you will find value here.</p></div>'
+  },
+  {
+    id: 4, type: "workshop", tag: "Workshop", tc: "tag-workshop",
+    mon: "Apr", day: "12", date: "Saturday, April 12, 2026",
+    title: "Building Emotional Resilience",
+    desc: "Practical tools for developing inner strength during life transitions. Interactive group format.",
+    time: "1:00 - 3:30 PM", loc: "HOA Main Hall", spots: 15, price: "Free",
+    longDesc: '<h2>About This Workshop</h2><p>Life transitions test our emotional reserves. This hands-on workshop provides practical, evidence-based tools for building resilience: identifying personal strengths, developing coping strategies, and creating support networks.</p><h3>What You Will Learn</h3><ul><li>How to identify and leverage your existing personal strengths</li><li>Evidence-based coping strategies for difficult moments</li><li>Techniques for building and maintaining a support network</li><li>Creating a personalized resilience action plan you can use immediately</li></ul><p>Through paired exercises and group activities, participants leave with a toolkit they can apply to the challenges they face in daily life.</p><div class="callout"><h4>Interactive Format</h4><p>This is a participatory workshop. Come ready to engage with others in paired and small group exercises. All activities are optional and adapted to individual comfort levels.</p></div>'
+  },
+  {
+    id: 5, type: "talk", tag: "Talk", tc: "tag-talk",
+    mon: "Apr", day: "18", date: "Friday, April 18, 2026",
+    title: "What Does Becoming Mean to You?",
+    desc: "An open discussion about personal growth, identity, and the courage it takes to change.",
+    time: "7:00 - 8:30 PM", loc: "HOA Community Room", spots: 25, price: "Free",
+    longDesc: '<h2>About This Talk</h2><p>Change is both exciting and scary at the same time. This community talk explores the concept of becoming \u2014 the ongoing process of growing into who we are meant to be.</p><p>Valerie shares insights from her counselling practice and Indigenous teachings about the nature of personal transformation, followed by an open community discussion where every voice is welcome.</p><h3>Evening Agenda</h3><ul><li>Opening reflection and welcome</li><li>Talk: Insights on becoming from counselling practice and Indigenous teachings</li><li>Open community discussion</li><li>Closing and refreshments</li></ul><blockquote>Becoming is challenging and yet rewarding. It requires courage and a genuine interest in exploring what troubles you.</blockquote><div class="callout"><h4>Refreshments</h4><p>Light refreshments and tea will be provided. Come early to settle in and connect with others before we begin.</p></div>'
+  },
+  {
+    id: 6, type: "circle", tag: "Community Circle", tc: "tag-circle",
+    mon: "Apr", day: "26", date: "Saturday, April 26, 2026",
+    title: "Grandparents and Elders Circle",
+    desc: "A sharing space for grandparents and elders to connect, share wisdom, and support one another.",
+    time: "10:00 - 11:30 AM", loc: "HOA Community Room", spots: 10, price: "Free",
+    longDesc: '<h2>About This Circle</h2><p>This circle honours the vital role of grandparents and elders in our communities. Participants gather to share stories, offer wisdom, and support one another through the unique joys and challenges of this life stage.</p><h3>What to Expect</h3><ul><li>A gentle opening and welcome</li><li>Guided sharing and storytelling in a circle format</li><li>Tea and bannock served during the gathering</li><li>A space to be heard, valued, and connected</li></ul><p>This circle recognizes that grandparents and elders carry invaluable knowledge and experience. In a world that often overlooks this wisdom, we create space to honour it.</p><div class="callout"><h4>All Backgrounds Welcome</h4><p>Whether you are Indigenous, a newcomer, or anyone who identifies as an elder or grandparent, you are warmly invited to join us.</p></div>'
+  },
+  {
+    id: 7, type: "retreat", tag: "Retreat", tc: "tag-retreat",
+    mon: "May", day: "03", date: "Saturday, May 3, 2026",
+    title: "Half-Day Wellness Retreat",
+    desc: "A morning of guided reflection, mindful movement, and group connection. Lunch included.",
+    time: "9:00 AM - 1:00 PM", loc: "HOA Garden and Main Hall", spots: 18, price: "$25",
+    longDesc: '<h2>About This Retreat</h2><p>Step away from the busyness of daily life for a half-day of restoration. This retreat weaves together guided reflection, gentle movement, creative expression, and community connection in a nurturing environment.</p><h3>Schedule</h3><ul><li><strong>9:00 AM</strong> \u2014 Welcome, tea, and opening circle</li><li><strong>9:30 AM</strong> \u2014 Guided reflection and journaling in the garden</li><li><strong>10:30 AM</strong> \u2014 Gentle movement session (all abilities welcome)</li><li><strong>11:15 AM</strong> \u2014 Creative expression activity</li><li><strong>12:00 PM</strong> \u2014 Community lunch and closing circle</li></ul><p>A healthy lunch is included in your registration. Please note any dietary requirements when you register so we can accommodate everyone.</p><div class="callout"><h4>What to Wear and Bring</h4><p>Comfortable clothing suitable for gentle movement and time outdoors. Bring a water bottle and a journal if you have one. Everything else is provided.</p></div><blockquote>Sometimes the most productive thing you can do is rest. This retreat is designed to help you pause, reflect, and reconnect with what matters.</blockquote>'
+  },
+  {
+    id: 8, type: "workshop", tag: "Workshop", tc: "tag-workshop",
+    mon: "May", day: "10", date: "Saturday, May 10, 2026",
+    title: "Parenting Across Cultures",
+    desc: "Exploring how different cultural backgrounds shape parenting approaches and finding common ground.",
+    time: "2:00 - 4:00 PM", loc: "HOA Community Room", spots: 14, price: "Free",
+    longDesc: '<h2>About This Workshop</h2><p>Every culture carries its own wisdom about raising children. This workshop brings together parents from diverse backgrounds to share, learn, and find common ground through structured dialogue and practical exercises.</p><h3>Discussion Topics</h3><ul><li>How our own cultural upbringing shapes the way we parent</li><li>Navigating different expectations between generations and cultures</li><li>Finding shared values across diverse parenting traditions</li><li>Building a multicultural parenting support network</li></ul><p>This is not a lecture but a conversation. Parents and caregivers of all backgrounds are welcome to share their experiences and learn from one another.</p><div class="callout"><h4>Childcare Note</h4><p>Childcare is not provided at this event, but older children who can participate respectfully are welcome to attend with a parent or caregiver.</p></div>'
+  }
+];
+
+// SVG icons
+var calSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>';
+var clockSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--sage-500)"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>';
+var pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--terracotta-500)"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>';
+var peopleSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--sky-400)"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772"/></svg>';
+var moneySvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:#7B62A8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>';
+var arrowSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>';
+var backSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>';
+
+// RENDER PAGE - reads id from ?id=, #id=, or defaults to 1
+var rawId = new URLSearchParams(window.location.search).get("id")
+  || (window.location.hash && window.location.hash.replace("#",""))
+  || "1";
+var id = parseInt(rawId);
+if (isNaN(id)) id = 1;
+var ev = EVENTS.find(function(e){ return e.id === id; });
+var page = document.getElementById("page");
+
+if (!ev) {
+  page.innerHTML = '<div class="not-found"><h1>Event Not Found</h1><p>This event may have been removed or the link is incorrect.</p><a href="events.html" class="back-link">' + backSvg + ' Back to all events</a></div>';
+  document.title = "Event Not Found - GYST Counselling Inc.";
+} else {
+  document.title = ev.title + " - GYST Counselling Inc.";
+  var grad = GRADS[(ev.id - 1) % GRADS.length];
+  var fewClass = ev.spots <= 10 ? " few" : "";
+
+  page.innerHTML =
+    // Banner
+    '<section class="page-top"><div class="page-top-inner">' +
+      '<div class="bc"><a href="gyst-v2.html">Home</a> <span>&rsaquo;</span> <a href="events.html">Events</a> <span>&rsaquo;</span> <span>' + ev.title + '</span></div>' +
+      '<div class="ev-banner" style="background:' + grad + '"><div class="ev-banner-icon">' + calSvg + '</div></div>' +
+    '</div></section>' +
+
+    // Content
+    '<div class="ev-wrap">' +
+      '<span class="ev-category ' + ev.tc + '">' + ev.tag + '</span>' +
+      '<h1 class="ev-title">' + ev.title + '</h1>' +
+      '<p class="ev-date-line">' + ev.date + '</p>' +
+      '<p class="ev-short-desc">' + ev.desc + '</p>' +
+
+      // Info cards
+      '<div class="info-grid">' +
+        '<div class="info-card"><div class="info-icon" style="background:var(--sage-50)">' + clockSvg + '</div><div class="info-label">Time</div><div class="info-value">' + ev.time + '</div></div>' +
+        '<div class="info-card"><div class="info-icon" style="background:var(--terracotta-50)">' + pinSvg + '</div><div class="info-label">Location</div><div class="info-value">' + ev.loc + '</div></div>' +
+        '<div class="info-card"><div class="info-icon" style="background:var(--sky-50)">' + peopleSvg + '</div><div class="info-label">Spots Left</div><div class="info-value">' + ev.spots + ' available</div></div>' +
+        '<div class="info-card"><div class="info-icon" style="background:var(--lavender-50)">' + moneySvg + '</div><div class="info-label">Cost</div><div class="info-value">' + ev.price + '</div></div>' +
+      '</div>' +
+
+      // Register bar
+      '<div class="register-bar">' +
+        '<div class="reg-spots"><span class="reg-dot' + fewClass + '"></span> ' + ev.spots + ' spots remaining</div>' +
+        '<span class="reg-price">' + ev.price + '</span>' +
+        '<button class="btn-register" id="regBtn">Register Now ' + arrowSvg + '</button>' +
+      '</div>' +
+
+      // Divider + long description
+      '<div class="section-divider"></div>' +
+      '<p class="section-label">Event Details</p>' +
+      '<div class="ev-long-desc">' + ev.longDesc + '</div>' +
+
+      // Back
+      '<div class="back-row"><a href="events.html" class="back-link">' + backSvg + ' Back to all events</a></div>' +
+    '</div>';
+
+  // Register button
+  document.getElementById("regBtn").onclick = function() {
+    this.innerHTML = "&#10003; Registered!";
+    this.style.background = "var(--sage-600)";
+    var b = this;
+    setTimeout(function() {
+      b.innerHTML = 'Register Now ' + arrowSvg;
+      b.style.background = "";
+    }, 3000);
+  };
+}
+</script>
+</body>
+</html>
