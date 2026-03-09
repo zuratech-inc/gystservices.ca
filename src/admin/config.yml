@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: zuratech-inc/gystservices.ca
+  name: git-gateway
   branch: main
 
 media_folder: "src/uploads"

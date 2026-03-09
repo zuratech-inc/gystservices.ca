@@ -37,6 +37,9 @@
   {# ── Stylesheet ── #}
   <link rel="stylesheet" href="/assets/css/main.css">
 
+  {# ── Netlify Identity widget (required for git-gateway CMS auth) ── #}
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+
   {# ── Page-specific head content ── #}
   {% block head %}{% endblock %}
 </head>
@@ -58,6 +61,7 @@
   {# ── Core scripts loaded deferred (non-blocking) ── #}
   <script src="/assets/js/nav.js" defer></script>
   <script src="/assets/js/reveal.js" defer></script>
+  <script src="/assets/js/identity.js" defer></script>
 
   {# ── Page-specific scripts ── #}
   {% block scripts %}{% endblock %}
