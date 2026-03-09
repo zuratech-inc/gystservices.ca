@@ -14,11 +14,122 @@ collections:
         label: "Home Page"
         file: "src/content/pages/index.md"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page.njk" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/home.njk" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Home" }
+          - { label: "SEO Description", name: "description", widget: "text" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/" }
-          - { label: "Body", name: "body", widget: "markdown" }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Heading (HTML allowed)", name: "heading", widget: "text" }
+              - { label: "Subheading", name: "subheading", widget: "text" }
+              - { label: "Primary Button Text", name: "cta_primary", widget: "string" }
+              - { label: "Secondary Button Text", name: "cta_secondary", widget: "string" }
+
+          - label: "Inclusivity Banner"
+            name: "inclusivity"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - label: "Values"
+                name: "values"
+                widget: "list"
+                field: { label: "Value", name: "value", widget: "string" }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Years of Experience", name: "years", widget: "string" }
+              - { label: "Years Label (HTML allowed)", name: "years_label", widget: "string" }
+              - label: "Bio Paragraphs"
+                name: "bio"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - label: "Credentials"
+                name: "credentials"
+                widget: "list"
+                fields:
+                  - { label: "Credential Title (e.g. M.C.)", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+
+          - label: "Philosophy Section"
+            name: "philosophy"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Card Title", name: "title", widget: "string" }
+                  - { label: "Card Body", name: "body", widget: "text" }
+
+          - label: "Mission Band"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+
+          - label: "Approach Section"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Card Title", name: "title", widget: "string" }
+                  - { label: "Card Body", name: "body", widget: "text" }
+
+          - label: "Events Section Header"
+            name: "events_section"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+
+          - label: "Testimonials Section Header"
+            name: "testimonials_section"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+
+          - label: "Blog Section Header"
+            name: "blog_section"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading (HTML allowed)", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+
+          - label: "Contact Section"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - label: "Free Session Card"
+                name: "free_session"
+                widget: "object"
+                fields:
+                  - { label: "Pill Label", name: "pill", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Body Text", name: "body", widget: "text" }
 
   - name: "posts"
     label: "Blog Posts"

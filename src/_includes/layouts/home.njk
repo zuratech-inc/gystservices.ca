@@ -21,16 +21,16 @@
       <span class="hero-badge-dot" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.264.26-2.467.73-3.56"/></svg>
       </span>
-      A welcoming space for everyone
+      {{ hero.badge }}
     </div>
-    <h1>Becoming is both<br><em>exciting &amp; scary</em>,<br>at the same time</h1>
-    <p class="hero-sub">A culturally grounded, inclusive counselling practice where every person — regardless of background, identity, or origin — is honoured and welcome.</p>
+    <h1>{{ hero.heading | safe }}</h1>
+    <p class="hero-sub">{{ hero.subheading }}</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">
-        Book Your Free First Session
+        {{ hero.cta_primary }}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
       </a>
-      <a href="#about" class="btn btn-secondary">Learn About Valerie</a>
+      <a href="#about" class="btn btn-secondary">{{ hero.cta_secondary }}</a>
     </div>
   </div>
 </section>
@@ -46,15 +46,12 @@
         <span class="inclusivity-icon">💜</span>
         <span class="inclusivity-icon">☀️</span>
       </div>
-      <h2>Everyone belongs here</h2>
-      <p>GYST Counselling is built on a foundation of respect for all peoples. Rooted in Indigenous teachings and open to every culture, background, and identity — we believe healing is a universal right. Whether you're Indigenous, a newcomer finding your footing, or anyone seeking support, this is your space.</p>
+      <h2>{{ inclusivity.heading }}</h2>
+      <p>{{ inclusivity.body }}</p>
       <div class="inclusivity-values">
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Indigenous-guided practice</span>
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Culturally responsive</span>
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Newcomer-friendly</span>
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> LGBTQ2S+ affirming</span>
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> All faiths &amp; beliefs</span>
-        <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Accessible online counselling</span>
+        {% for value in inclusivity.values %}
+          <span class="value-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> {{ value }}</span>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -72,29 +69,23 @@
           </div>
         </div>
         <div class="about-float-card" aria-label="Experience">
-          <strong>20+</strong>
-          <span>Years in counselling<br>&amp; community work</span>
+          <strong>{{ about.years }}</strong>
+          <span>{{ about.years_label | safe }}</span>
         </div>
       </div>
       <div class="about-text reveal">
-        <p class="section-label">About Valerie</p>
+        <p class="section-label">{{ about.label }}</p>
         <h2 class="section-heading">{{ site.practitioner.name }}, {{ site.practitioner.credentials }}</h2>
-        <p>Born in The Pas, Manitoba and raised in Canada's North, the Indigenous worldview is something I hold close and continues to guide me in everything I do. Third in a line of nine children, I learned at a very young age the value of simple basic truths.</p>
-        <p>I define myself physically, mentally, emotionally, and spiritually — and attend to each of these parts of myself daily. When life gets complicated, I have learned to simplify by returning to core values.</p>
-        <p>With years at Mount Royal University coaching Indigenous students and eight years at Hull Services supporting families healing from intergenerational trauma, I bring deep experience in culturally responsive care to my private practice. I'm a proud grandmother to six beautiful grandchildren who are the loves of my life.</p>
+        {% for paragraph in about.bio %}
+          <p>{{ paragraph }}</p>
+        {% endfor %}
         <div class="credentials-row">
-          <div class="credential-chip">
-            <strong>M.C.</strong>
-            <span>Master of Counselling</span>
-          </div>
-          <div class="credential-chip">
-            <strong>CCC</strong>
-            <span>Canadian Certified Counsellor</span>
-          </div>
-          <div class="credential-chip">
-            <strong>B.A.</strong>
-            <span>Psychology, U of Lethbridge</span>
-          </div>
+          {% for credential in about.credentials %}
+            <div class="credential-chip">
+              <strong>{{ credential.title }}</strong>
+              <span>{{ credential.description }}</span>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -105,31 +96,31 @@
 <section class="philosophy" id="philosophy" aria-label="Counselling philosophy">
   <div class="section-inner">
     <div class="philosophy-header reveal">
-      <p class="section-label">Counselling Philosophy</p>
-      <h2 class="section-heading">A journey that requires courage</h2>
-      <p class="section-sub">Counselling is a purposeful process that facilitates growth, direction, and wellness — it is all about change. A genuine interest in exploring what troubles you is the first brave step.</p>
+      <p class="section-label">{{ philosophy.label }}</p>
+      <h2 class="section-heading">{{ philosophy.heading }}</h2>
+      <p class="section-sub">{{ philosophy.body }}</p>
     </div>
     <div class="philosophy-grid">
       <div class="phil-card reveal">
         <div class="phil-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
         </div>
-        <h3>Collaborative</h3>
-        <p>Therapeutic change is the collaborative work done by counsellor and client — identifying goals as well as a plan to realize them together.</p>
+        <h3>{{ philosophy.cards[0].title | safe }}</h3>
+        <p>{{ philosophy.cards[0].body }}</p>
       </div>
       <div class="phil-card reveal">
         <div class="phil-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
         </div>
-        <h3>Safe &amp; Confidential</h3>
-        <p>A purposefully safe and confidential place where we can explore the possibilities in change without judgment.</p>
+        <h3>{{ philosophy.cards[1].title | safe }}</h3>
+        <p>{{ philosophy.cards[1].body }}</p>
       </div>
       <div class="phil-card reveal">
         <div class="phil-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
         </div>
-        <h3>Guided by You</h3>
-        <p>My intention is to be guided by your needs — meeting you where you are with genuine empathy and positive regard for your person.</p>
+        <h3>{{ philosophy.cards[2].title | safe }}</h3>
+        <p>{{ philosophy.cards[2].body }}</p>
       </div>
     </div>
   </div>
@@ -138,7 +129,7 @@
 {# ── MISSION BAND ── #}
 <section class="mission-band" aria-label="Mission statement">
   <div class="mi reveal">
-    <blockquote>"I would be honoured by your willingness to entrust me as a partner in this work."</blockquote>
+    <blockquote>"{{ mission.quote }}"</blockquote>
     <p class="attr">— {{ site.practitioner.name }}</p>
   </div>
 </section>
@@ -147,25 +138,25 @@
 <section class="approach" id="approach" aria-label="Therapeutic approach">
   <div class="section-inner">
     <div class="reveal">
-      <p class="section-label">Therapeutic Perspective</p>
-      <h2 class="section-heading">Grounded in culture, guided by theory</h2>
-      <p class="section-sub">My therapeutic perspective is influenced at its foundation by cultural teachings and integrates three evidence-based frameworks.</p>
+      <p class="section-label">{{ approach.label }}</p>
+      <h2 class="section-heading">{{ approach.heading }}</h2>
+      <p class="section-sub">{{ approach.body }}</p>
     </div>
     <div class="approach-grid">
       <div class="approach-card reveal">
         <div class="approach-num" aria-hidden="true">01</div>
-        <h3>Existentialism</h3>
-        <p>A philosophical approach at whose core is the belief that each of us has the ability to find meaning in our lives. The counsellor works to understand you on your own subjective terms, encouraging reflection and taking responsibility for change.</p>
+        <h3>{{ approach.cards[0].title }}</h3>
+        <p>{{ approach.cards[0].body }}</p>
       </div>
       <div class="approach-card reveal">
         <div class="approach-num" aria-hidden="true">02</div>
-        <h3>Solutions-Focused Brief Therapy</h3>
-        <p>Concentrating on small, realistic, and sustainable goals that result in positive outcomes. You are empowered as the expert in who you are — we focus on solutions and results rather than dwelling on problems.</p>
+        <h3>{{ approach.cards[1].title }}</h3>
+        <p>{{ approach.cards[1].body }}</p>
       </div>
       <div class="approach-card reveal">
         <div class="approach-num" aria-hidden="true">03</div>
-        <h3>Family Systems Therapy</h3>
-        <p>Focusing on human problems from a relational perspective — we are best understood by how we interact within our systems. This explores intergenerational meanings, rules, processes, and cultural nuances.</p>
+        <h3>{{ approach.cards[2].title }}</h3>
+        <p>{{ approach.cards[2].body }}</p>
       </div>
     </div>
   </div>
@@ -176,9 +167,9 @@
   <div class="section-inner">
     <div class="events-header reveal">
       <div>
-        <p class="section-label">Community Events</p>
-        <h2 class="section-heading">Upcoming gatherings</h2>
-        <p class="section-sub">Join us for workshops, circles, and community events. All are welcome — registration is open.</p>
+        <p class="section-label">{{ events_section.label }}</p>
+        <h2 class="section-heading">{{ events_section.heading }}</h2>
+        <p class="section-sub">{{ events_section.body }}</p>
       </div>
       <a href="/events/" class="btn btn-secondary">
         View All Events
@@ -276,9 +267,9 @@
 <section class="testimonials" id="testimonials" aria-label="Client testimonials">
   <div class="section-inner">
     <div class="testimonials-header reveal">
-      <p class="section-label">Client Voices</p>
-      <h2 class="section-heading">What clients are saying</h2>
-      <p class="section-sub">Real words from real people who have walked this journey.</p>
+      <p class="section-label">{{ testimonials_section.label }}</p>
+      <h2 class="section-heading">{{ testimonials_section.heading }}</h2>
+      <p class="section-sub">{{ testimonials_section.body }}</p>
     </div>
     <div class="testi-grid">
       {% for t in testimonials %}
@@ -301,9 +292,9 @@
   <div class="section-inner">
     <div class="blog-header reveal">
       <div>
-        <p class="section-label">From the Blog</p>
-        <h2 class="section-heading">Insights &amp; reflections</h2>
-        <p class="section-sub">Thoughts on wellness, cultural identity, growth, and the journey of becoming.</p>
+        <p class="section-label">{{ blog_section.label }}</p>
+        <h2 class="section-heading">{{ blog_section.heading | safe }}</h2>
+        <p class="section-sub">{{ blog_section.body }}</p>
       </div>
       <a href="/blog/" class="btn btn-secondary">
         All Posts
@@ -412,9 +403,9 @@
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <p class="section-label">Get in Touch</p>
-        <h2 class="section-heading">Ready to begin?</h2>
-        <p>In any counselling relationship, "good fit" is essential. Both parties need to feel like they will work well together. You deserve a space where you feel truly seen and understood.</p>
+        <p class="section-label">{{ contact.label }}</p>
+        <h2 class="section-heading">{{ contact.heading }}</h2>
+        <p>{{ contact.body }}</p>
 
         <div class="contact-row">
           <div class="contact-icon" aria-hidden="true">
@@ -459,9 +450,9 @@
 
       <div class="reveal">
         <div class="free-card">
-          <span class="free-pill">&#10022; Complimentary</span>
-          <h3>Your first session is free</h3>
-          <p>Good fit matters. That's why your initial session comes at no charge — so we can both feel confident about working together. Book by phone or email and we'll find a time that works.</p>
+          <span class="free-pill">&#10022; {{ contact.free_session.pill }}</span>
+          <h3>{{ contact.free_session.heading }}</h3>
+          <p>{{ contact.free_session.body }}</p>
           <div class="free-card-actions">
             <a href="tel:{{ site.contact.phone | replace('-', '') }}" class="btn btn-primary">
               Call to Book
