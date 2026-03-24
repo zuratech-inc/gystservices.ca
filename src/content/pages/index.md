@@ -11,7 +11,7 @@ hero:
   cta_secondary: Learn About Valerie
 inclusivity:
   heading: Everyone belongs here
-  body: GYST Counselling is built on a foundation of respect for all peoples. Rooted in Indigenous teachings and open to every culture, background, and identity — we believe healing is a universal right. Whether you're Indigenous, a newcomer finding your footing, or anyone seeking support, this is your space.
+  body: "!!!GYST Counselling is built on a foundation of respect for all peoples. Rooted in Indigenous teachings and open to every culture, background, and identity — we believe healing is a universal right. Whether you're Indigenous, a newcomer finding your footing, or anyone seeking support, this is your space."
   values:
     - Indigenous-guided practice
     - Culturally responsive
