@@ -21,7 +21,7 @@ inclusivity:
     - Accessible online counselling
 about:
   label: About Valerie
-  image: /uploads/V-M-S-220x300.jpg
+  image: /uploads/9092517899319966301 (1).jpg
   years: 20+
   years_label: Years in counselling<br>&amp; community work
   bio:
